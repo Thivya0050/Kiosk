@@ -1226,11 +1226,11 @@
         /* Samsung Tab A8 Portrait Mode - 1200x1920 */
         @media (min-width: 800px) and (max-width: 1200px) and (min-height: 1200px) {
             .header {
-                height: 90px; /* Smaller height for portrait */
-                padding: 0 20px; /* Reduced padding */
-                max-width: 220px; /* Much smaller width for portrait */
-                width: 30%; /* Much smaller percentage for better centering */
-                border-radius: 15px; /* Smaller border radius */
+                height: 60px; /* Much smaller height for portrait */
+                padding: 0 15px; /* Reduced padding */
+                max-width: 180px; /* Much smaller width for portrait - like web app example */
+                width: 25%; /* Smaller percentage for better centering */
+                border-radius: 12px; /* Smaller border radius */
                 margin-top: 10px; /* Reduced top margin */
             }
             
@@ -1676,6 +1676,14 @@
         
         /* Samsung Tab A8 Ultra-Specific Portrait Mode - Improved Accessibility */
         @media (min-width: 800px) and (max-width: 1200px) and (min-height: 1200px) and (orientation: portrait) {
+            .header {
+                height: 50px !important; /* Even smaller height for ultra-specific portrait */
+                max-width: 160px !important; /* Much smaller width - like web app example */
+                width: 22% !important; /* Smaller percentage for perfect centering */
+                border-radius: 10px !important; /* Smaller border radius */
+                margin-top: 8px !important; /* Reduced top margin */
+            }
+            
             #landing-page .main-content {
                 height: 100vh !important;
                 padding: 10px !important;
@@ -2654,6 +2662,14 @@
             div#page-title.page-title {
                 font-size: 14px !important;
                 background-color: rgba(255, 0, 0, 0.1) !important; /* DEBUG: Red tint to confirm this rule is active */
+            }
+            
+            .header {
+                height: 55px !important; /* Smaller height for tablets */
+                max-width: 170px !important; /* Smaller width like web app example */
+                width: 24% !important; /* Smaller percentage for better centering */
+                border-radius: 12px !important; /* Smaller border radius */
+                margin-top: 10px !important; /* Reduced top margin */
             }
         }
         
@@ -4090,7 +4106,8 @@
             // JAVASCRIPT-BASED RESPONSIVE TITLE FIX
             function adjustTitleForTablet() {
                 const pageTitle = document.getElementById('page-title');
-                if (!pageTitle) return;
+                const header = document.querySelector('.header');
+                if (!pageTitle || !header) return;
                 
                 const screenWidth = window.innerWidth;
                 const screenHeight = window.innerHeight;
@@ -4102,11 +4119,26 @@
                     // Force smaller font size for tablets
                     pageTitle.style.fontSize = '14px';
                     pageTitle.style.backgroundColor = 'rgba(0, 0, 255, 0.1)'; // DEBUG: Blue tint
-                    console.log('Applied tablet title fix - font size set to 14px');
+                    
+                    // Make header smaller and more centralized like web app example
+                    header.style.height = '50px';
+                    header.style.maxWidth = '160px';
+                    header.style.width = '22%';
+                    header.style.borderRadius = '10px';
+                    header.style.marginTop = '8px';
+                    header.style.backgroundColor = 'rgba(0, 255, 0, 0.1)'; // DEBUG: Green tint for header
+                    
+                    console.log('Applied tablet fixes - title: 14px, header: smaller and centralized');
                 } else {
                     // Reset to normal size for desktop
                     pageTitle.style.fontSize = '24px';
                     pageTitle.style.backgroundColor = 'transparent';
+                    header.style.height = '80px';
+                    header.style.maxWidth = '200px';
+                    header.style.width = '25%';
+                    header.style.borderRadius = '15px';
+                    header.style.marginTop = '15px';
+                    header.style.backgroundColor = '';
                 }
             }
             
