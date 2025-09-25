@@ -63,6 +63,16 @@
             margin-top: 15px; /* Reduced top margin */
         }
         
+        /* Base page title styling */
+        .page-title {
+            font-size: 24px;
+        }
+        
+        /* Force responsive page title - highest specificity */
+        #page-title.page-title {
+            font-size: 24px;
+        }
+        
         .header-logo {
             background: transparent;
             border-radius: 0;
@@ -1023,20 +1033,46 @@
             }
             
             /* Responsive page title for small screens */
-            .page-title {
+            #page-title.page-title {
                 font-size: 12px !important;
             }
         }
         
         /* General tablet responsive styling for page titles */
         @media (max-width: 1024px) {
-            .page-title {
+            #page-title.page-title {
                 font-size: 18px !important;
             }
         }
         
         @media (max-width: 768px) {
-            .page-title {
+            #page-title.page-title {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* Samsung Galaxy Tab A8 specific media queries */
+        @media screen and (max-width: 800px) {
+            #page-title.page-title {
+                font-size: 14px !important;
+            }
+        }
+        
+        @media screen and (max-width: 600px) {
+            #page-title.page-title {
+                font-size: 12px !important;
+            }
+        }
+        
+        /* Force smaller titles on any tablet-like device */
+        @media screen and (max-device-width: 1024px) and (orientation: portrait) {
+            #page-title.page-title {
+                font-size: 14px !important;
+            }
+        }
+        
+        @media screen and (max-device-width: 1024px) and (orientation: landscape) {
+            #page-title.page-title {
                 font-size: 16px !important;
             }
         }
@@ -1054,7 +1090,7 @@
             }
             
             /* Responsive page title for landscape tablet */
-            .page-title {
+            #page-title.page-title {
                 font-size: 20px !important;
             }
             
@@ -1199,7 +1235,7 @@
             }
             
             /* Responsive page title for portrait tablet */
-            .page-title {
+            #page-title.page-title {
                 font-size: 16px !important;
             }
             
@@ -1652,7 +1688,7 @@
             }
             
             /* Responsive page title for ultra-specific portrait mode */
-            .page-title {
+            #page-title.page-title {
                 font-size: 14px !important;
             }
             
@@ -2593,13 +2629,32 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
+        
+        /* AGGRESSIVE FALLBACK - Force smaller titles on tablets */
+        @media screen and (max-width: 1024px) {
+            div#page-title.page-title {
+                font-size: 16px !important;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            div#page-title.page-title {
+                font-size: 14px !important;
+            }
+        }
+        
+        @media screen and (max-width: 600px) {
+            div#page-title.page-title {
+                font-size: 12px !important;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Header (always visible) -->
         <div class="header">
-            <div class="page-title" id="page-title" style="flex: 1; text-align: center; color: white; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+            <div class="page-title" id="page-title" style="flex: 1; text-align: center; color: white; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
                 <!-- Page title will be updated by JavaScript -->
             </div>
         </div>
