@@ -1021,6 +1021,24 @@
             .page {
                 min-height: calc(100vh - 70px);
             }
+            
+            /* Responsive page title for small screens */
+            .page-title {
+                font-size: 12px !important;
+            }
+        }
+        
+        /* General tablet responsive styling for page titles */
+        @media (max-width: 1024px) {
+            .page-title {
+                font-size: 18px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 16px !important;
+            }
         }
         
         /* Samsung Tab A8 2021 - 10.5" 1920x1200 - EXACT OPTIMIZATION */
@@ -1033,6 +1051,11 @@
                 border-radius: 20px;
                 margin: 0 auto;
                 margin-top: 20px;
+            }
+            
+            /* Responsive page title for landscape tablet */
+            .page-title {
+                font-size: 20px !important;
             }
             
             .page {
@@ -1173,6 +1196,11 @@
                 width: 30%; /* Much smaller percentage for better centering */
                 border-radius: 15px; /* Smaller border radius */
                 margin-top: 10px; /* Reduced top margin */
+            }
+            
+            /* Responsive page title for portrait tablet */
+            .page-title {
+                font-size: 16px !important;
             }
             
             .page {
@@ -1621,6 +1649,11 @@
                 flex-direction: column !important;
                 align-items: center !important;
                 -webkit-overflow-scrolling: touch !important;
+            }
+            
+            /* Responsive page title for ultra-specific portrait mode */
+            .page-title {
+                font-size: 14px !important;
             }
             
             .logo-container-main {
