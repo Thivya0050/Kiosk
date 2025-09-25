@@ -2648,6 +2648,22 @@
                 font-size: 12px !important;
             }
         }
+        
+        /* UNIVERSAL TABLET FIX - This should work on ANY tablet */
+        @media screen and (max-device-width: 1024px) {
+            div#page-title.page-title {
+                font-size: 14px !important;
+                background-color: rgba(255, 0, 0, 0.1) !important; /* DEBUG: Red tint to confirm this rule is active */
+            }
+        }
+        
+        /* FORCE SMALL TITLES - Nuclear option */
+        @media screen and (max-width: 1200px) {
+            div#page-title.page-title {
+                font-size: 12px !important;
+                background-color: rgba(0, 255, 0, 0.1) !important; /* DEBUG: Green tint to confirm this rule is active */
+            }
+        }
     </style>
 </head>
 <body>
@@ -4070,6 +4086,40 @@
             console.log('Features: Full kiosk flow, multi-language support, cart, payment system, promotional slider, boundary scroll highlighting');
             console.log('Current active page:', document.querySelector('.page.active')?.id);
             console.log('Header element:', document.querySelector('.header'));
+            
+            // JAVASCRIPT-BASED RESPONSIVE TITLE FIX
+            function adjustTitleForTablet() {
+                const pageTitle = document.getElementById('page-title');
+                if (!pageTitle) return;
+                
+                const screenWidth = window.innerWidth;
+                const screenHeight = window.innerHeight;
+                const isTablet = screenWidth <= 1024 || screenHeight <= 1024;
+                
+                console.log('Screen dimensions:', screenWidth, 'x', screenHeight, 'isTablet:', isTablet);
+                
+                if (isTablet) {
+                    // Force smaller font size for tablets
+                    pageTitle.style.fontSize = '14px';
+                    pageTitle.style.backgroundColor = 'rgba(0, 0, 255, 0.1)'; // DEBUG: Blue tint
+                    console.log('Applied tablet title fix - font size set to 14px');
+                } else {
+                    // Reset to normal size for desktop
+                    pageTitle.style.fontSize = '24px';
+                    pageTitle.style.backgroundColor = 'transparent';
+                }
+            }
+            
+            // Run on page load
+            adjustTitleForTablet();
+            
+            // Run on window resize
+            window.addEventListener('resize', adjustTitleForTablet);
+            
+            // Run on orientation change (for tablets)
+            window.addEventListener('orientationchange', function() {
+                setTimeout(adjustTitleForTablet, 100); // Small delay to let orientation change complete
+            });
         });
     </script>
 </body>
