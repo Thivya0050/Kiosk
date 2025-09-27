@@ -2,170 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Amakiosk - Food Ordering Kiosk</title>
+    <meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=no">
+    <title>Landing Page Sample - Sketch Design</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-    
-        /* Prevent visual glitches and improve rendering */
-        * {
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        img, button, .menu-item, .category-btn, .add-to-cart-btn {
-            transform: translateZ(0);
-            -webkit-transform: translateZ(0);
-        }
-    
+
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #cca280, #cca280);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+            background: linear-gradient(135deg, #ddcbbd, #ddbcad);
             height: 100vh;
             overflow: hidden;
-            /* Tablet optimizations */
-            -webkit-text-size-adjust: 100%;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-            /* Smooth scrolling for Samsung Tab A8 */
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .container {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-        
-        .header {
-            height: 80px; /* Reduced height for smaller appearance */
-            background: url('wood.png') repeat-x;
-            background-size: auto 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 15px; /* Reduced padding */
-            position: relative;
-            z-index: 100;
-            max-width: 200px; /* Much smaller width */
-            width: 25%; /* Much smaller percentage */
-            margin: 0 auto;
-            border-radius: 15px; /* Slightly smaller border radius */
-            margin-top: 15px; /* Reduced top margin */
-        }
-        
-        /* Base page title styling */
-        .page-title {
-            font-size: 24px;
-        }
-        
-        /* Force responsive page title - highest specificity */
-        #page-title.page-title {
-            font-size: 24px;
-        }
-        
-        .header-logo {
-            background: transparent;
-            border-radius: 0;
-            padding: 0;
-            box-shadow: none;
-            margin-right: 15px;
-        }
-        
-        /* Background color for specific pages */
-        #menu-page {
-            background-color: #cca280;
-        }
-        
-        #cart-page {
-            background-color: #cca280;
-        }
-        
-        #payment-page {
-            background-color: #cca280;
         }
 
-        .header.landing-header {
-            display: none;
-        }
-        
-        .header.language-header {
-            display: none;
-        }
-        
-        /* Landing page full height layout */
-        #landing-page {
-            top: 0 !important;
-            height: 100vh !important;
-        }
-        
-        /* Language page full height layout */
-        #language-page {
-            top: 0 !important;
-            height: 100vh !important;
-        }
-        
-        #landing-page .main-content {
-            height: 100vh;
-            padding: 20px;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-       
-        .logo-container {
-            background: white;
-            border-radius: 5x;
-            padding: 0px 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            animation: bounce 5s infinite;
-        }
-        
-        .logo {
-            height: 40px;
-            width: 40px;
-        }
-        
-        .halal-badge {
-            background: rgb(138, 92, 6);
-            border-radius: 10px;
-            padding: 8px 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            animation: pulse 2s infinite;
-        }
-        
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
         .background-doodles {
-            position: absolute;
-            top: -20px;
+            position: fixed;
+            top: 0;
             left: 0;
             width: 100%;
-            height: calc(100% + 40px);
-            z-index: 1;
+            height: 100%;
+            z-index: 0;
             pointer-events: none;
         }
-        
+
         .doodle1 {
             position: absolute;
             top: 10%;
@@ -192,3966 +54,786 @@
             left: 45%;
             width: 180px;
             height: auto;
-            opacity: 0.5;
-            animation: float 4s ease-in-out infinite 2s;
-        }
-        
-        .doodle2 {
-            position: absolute;
-            top: 20%;
-            right: 10%;
-            width: 180px;
-            height: auto;
-            opacity: 0.7;
-            animation: float 4s ease-in-out infinite 0.5s;
-        }
-        
-        .doodle2-2 {
-            position: absolute;
-            top: 70%;
-            right: 10%;
-            width: 160px;
-            height: auto;
             opacity: 0.6;
-            animation: float 4s ease-in-out infinite 2.5s;
-        }
-        
-        .doodle2-3 {
-            position: absolute;
-            top: 5%;
-            left: 30%;
-            width: 140px;
-            height: auto;
-            opacity: 0.5;
             animation: float 4s ease-in-out infinite 3s;
-        }
-        
-        .doodle3 {
-            position: absolute;
-            bottom: 25%;
-            left: 15%;
-            width: 220px;
-            height: auto;
-            opacity: 0.6;
-            animation: float 4s ease-in-out infinite 1s;
-        }
-        
-        .doodle3-2 {
-            position: absolute;
-            top: 45%;
-            right: 5%;
-            width: 200px;
-            height: auto;
-            opacity: 0.5;
-            animation: float 4s ease-in-out infinite 3.5s;
-        }
-        
-        .doodle3-3 {
-            position: absolute;
-            bottom: 10%;
-            right: 20%;
-            width: 170px;
-            height: auto;
-            opacity: 0.4;
-            animation: float 4s ease-in-out infinite 4s;
-        }
-        
-        .doodle3-4 {
-            position: absolute;
-            top: 80%;
-            left: 50%;
-            width: 190px;
-            height: auto;
-            opacity: 0.3;
-            animation: float 4s ease-in-out infinite 4.5s;
         }
         
         .doodle1-4 {
             position: absolute;
-            top: 15%;
-            right: 25%;
-            width: 120px;
+            top: 60%;
+            left: 15%;
+            width: 160px;
             height: auto;
-            opacity: 0.4;
-            animation: float 4s ease-in-out infinite 5s;
-        }
-        
-        .doodle2-4 {
-            position: absolute;
-            top: 50%;
-            left: 25%;
-            width: 130px;
-            height: auto;
-            opacity: 0.5;
-            animation: float 4s ease-in-out infinite 5.5s;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 4.5s;
         }
         
         .doodle1-5 {
             position: absolute;
-            top: 75%;
-            left: 5%;
-            width: 110px;
-            height: auto;
-            opacity: 0.3;
-            animation: float 4s ease-in-out infinite 6s;
-        }
-        
-        .doodle3-5 {
-            position: absolute;
-            top: 35%;
-            right: 40%;
+            top: 80%;
+            left: 40%;
             width: 140px;
             height: auto;
-            opacity: 0.4;
-            animation: float 4s ease-in-out infinite 6.5s;
-        }
-        
-        .doodle2-5 {
-            position: absolute;
-            top: 85%;
-            right: 50%;
-            width: 125px;
-            height: auto;
-            opacity: 0.3;
-            animation: float 4s ease-in-out infinite 7s;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 6s;
         }
         
         .doodle1-6 {
             position: absolute;
-            top: 25%;
-            left: 60%;
-            width: 100px;
+            top: 20%;
+            left: 80%;
+            width: 170px;
             height: auto;
             opacity: 0.6;
-            animation: float 4s ease-in-out infinite;
-            animation-delay: 1.5s;
+            animation: float 4s ease-in-out infinite 7.5s;
         }
         
         .doodle1-7 {
             position: absolute;
+            top: 50%;
+            left: 25%;
+            width: 190px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 9s;
+        }
+        
+        .doodle2 {
+            position: absolute;
+            top: 15%;
+            left: 85%;
+            width: 120px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 0.5s;
+        }
+        
+        .doodle2-2 {
+            position: absolute;
+            top: 75%;
+            left: 10%;
+            width: 100px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 2s;
+        }
+        
+        .doodle2-3 {
+            position: absolute;
+            top: 40%;
+            left: 60%;
+            width: 110px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 3.5s;
+        }
+        
+        .doodle2-4 {
+            position: absolute;
             top: 65%;
+            left: 35%;
+            width: 130px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 5s;
+        }
+        
+        .doodle2-5 {
+            position: absolute;
+            top: 25%;
             left: 20%;
             width: 90px;
             height: auto;
-            opacity: 0.7;
-            animation: float 3s ease-in-out infinite;
-            animation-delay: 0.5s;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 6.5s;
         }
         
         .doodle2-6 {
             position: absolute;
-            top: 40%;
-            right: 30%;
-            width: 110px;
+            top: 85%;
+            left: 55%;
+            width: 105px;
             height: auto;
             opacity: 0.5;
-            animation: float 4.5s ease-in-out infinite;
-            animation-delay: 2.5s;
+            animation: float 5s ease-in-out infinite 8s;
         }
         
         .doodle2-7 {
             position: absolute;
-            top: 80%;
-            left: 40%;
-            width: 95px;
+            top: 5%;
+            left: 50%;
+            width: 115px;
             height: auto;
-            opacity: 0.6;
-            animation: float 3.5s ease-in-out infinite;
-            animation-delay: 1s;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 9.5s;
+        }
+        
+        .doodle3 {
+            position: absolute;
+            top: 35%;
+            left: 75%;
+            width: 80px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 1s;
+        }
+        
+        .doodle3-2 {
+            position: absolute;
+            top: 70%;
+            left: 5%;
+            width: 70px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 2.5s;
+        }
+        
+        .doodle3-3 {
+            position: absolute;
+            top: 45%;
+            left: 30%;
+            width: 85px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 4s;
+        }
+        
+        .doodle3-4 {
+            position: absolute;
+            top: 15%;
+            left: 40%;
+            width: 75px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 5.5s;
+        }
+        
+        .doodle3-5 {
+            position: absolute;
+            top: 55%;
+            left: 65%;
+            width: 90px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 7s;
         }
         
         .doodle3-6 {
             position: absolute;
-            top: 55%;
-            right: 15%;
-            width: 85px;
+            top: 95%;
+            left: 25%;
+            width: 65px;
             height: auto;
-            opacity: 0.7;
-            animation: float 4s ease-in-out infinite;
-            animation-delay: 0.8s;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 8.5s;
         }
         
         .doodle3-7 {
             position: absolute;
-            top: 15%;
-            left: 80%;
-            width: 105px;
+            top: 10%;
+            left: 15%;
+            width: 95px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 10s;
+        }
+        
+        /* Additional bottom right doodles */
+        .doodle1-8 {
+            position: absolute;
+            top: 85%;
+            right: 5%;
+            width: 160px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 2s;
+        }
+        
+        .doodle2-8 {
+            position: absolute;
+            top: 95%;
+            right: 15%;
+            width: 120px;
             height: auto;
             opacity: 0.5;
-            animation: float 5s ease-in-out infinite;
-            animation-delay: 3s;
+            animation: float 5s ease-in-out infinite 3.5s;
         }
         
-        .content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            background: #cca280;
-            border-radius: 20px;
-            padding: 25px;
-            animation: slideIn 1s ease-out;
-            margin: 0 1px;
-            width: calc(100% - 2px);
+        .doodle3-8 {
+            position: absolute;
+            top: 90%;
+            right: 8%;
+            width: 85px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 5s;
         }
         
-        .halal-logo-fixed {
-            position: fixed;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            width: 80px;
-            height: 80px;
-            z-index: 1000;
-            animation: pulse 2s infinite;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            background: white;
-            padding: 10px;
-            display: none; /* Hidden by default */
+        /* Additional left side and center doodles */
+        .doodle1-9 {
+            position: absolute;
+            top: 40%;
+            left: 2%;
+            width: 140px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 1.2s;
+        }
+        
+        .doodle2-9 {
+            position: absolute;
+            top: 60%;
+            left: 1%;
+            width: 110px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 2.8s;
+        }
+        
+        .doodle3-9 {
+            position: absolute;
+            top: 80%;
+            left: 3%;
+            width: 90px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 4.2s;
+        }
+        
+        .doodle1-10 {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            width: 130px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 0.8s;
+        }
+        
+        .doodle2-10 {
+            position: absolute;
+            top: 65%;
+            left: 48%;
+            width: 100px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 2.2s;
+        }
+        
+        /* Additional right side doodles */
+        .doodle1-11 {
+            position: absolute;
+            top: 35%;
+            right: 2%;
+            width: 150px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 1.8s;
+        }
+        
+        .doodle2-11 {
+            position: absolute;
+            top: 55%;
+            right: 1%;
+            width: 125px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 3.2s;
+        }
+        
+        .doodle3-11 {
+            position: absolute;
+            top: 75%;
+            right: 3%;
+            width: 95px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 4.8s;
+        }
+        
+        .doodle1-12 {
+            position: absolute;
+            top: 15%;
+            right: 12%;
+            width: 135px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 0.6s;
+        }
+        
+        .doodle2-12 {
+            position: absolute;
+            top: 45%;
+            right: 8%;
+            width: 115px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 2.4s;
         }
 
-        /* Show halal logo only on landing page */
-        .halal-logo-fixed.show {
-            display: block;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
-        
-        .logo-container-main {
-            background: transparent;
-            border-radius: 15px;
-            padding: 15px;
-            margin: 0 1px 20px 1px;
-            width: calc(100% - 2px);
-            position: relative;
+
+        /* Layer 1 - ALI ae.webm (Top Section) */
+        .layer1 {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 25%;
             z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
         }
-        
-        .logo-large {
+
+        .ali-video {
             width: 100%;
-            max-width: 400px;
-            height: auto;
-            margin: 0;
-            animation: rotate 8s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
-            background: transparent;
-            border: none;
-            outline: none;
-            display: block;
-            margin: 0 auto;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
         }
-        
-        /* Promotional Section */
+
+        /* Layer 2 - Video and Images (Middle Section) */
+        .layer2 {
+            position: absolute;
+            top: 30%;
+            left: 0;
+            width: 100%;
+            height: 55%;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
         .promotional-section {
             width: 100%;
-            max-width: 350px;
-            margin: 0 auto 20px auto;
+            max-width: 1000px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
         }
-        
+
         .promo-slider {
             position: relative;
             width: 100%;
-            height: 120px;
+            height: 100%;
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
         }
-        
+
         .promo-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-        
-        .promo-slide.active {
-            opacity: 1;
-        }
-        
-        .promo-video {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #f080dd, #f080dd);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .promo-placeholder {
-            text-align: center;
-            color: white;
-            z-index: 2;
-        }
-        
-        .play-icon {
-            font-size: 32px;
-            margin-bottom: 8px;
-            animation: pulse 2s infinite;
-        }
-        
-        .promo-placeholder h3 {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 4px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .promo-placeholder p {
-            font-size: 14px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .promo-banner {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .promo-banner:nth-child(2) {
-            background: linear-gradient(135deg, #cca280, #cca280);
-        }
-        
-        .promo-banner:nth-child(3) {
-            background: linear-gradient(135deg, #cca280, #cca280);
-        }
-        
-        .promo-content {
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        
-        .promo-content h3 {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 4px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .promo-content p {
-            font-size: 12px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .promo-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: #ff4757;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: bold;
-            animation: bounce 1s infinite;
-        }
-        
-        .promo-dots {
-            text-align: center;
-            margin-top: 8px;
-        }
-        
-        .dot {
-            height: 12px;
-            width: 12px;
-            margin: 0 5px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .dot.active, .dot:hover {
-            background-color: #8B4513;
-        }
-        
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            margin-top: 20px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-        
-        .subtitle {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .minisubtitle {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        
-        .start-button {
-            background: url('wood.png') repeat;
-            background-size: 200px 100%;
-            color: white;
-            border: none;
-            border-radius: 15px;
-            padding: 25px 45px;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-        
-        .start-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
-        }
-        
-        .start-button:active {
-            transform: translateY(-2px) scale(1.02);
-        }
-        
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-        
-        /* Universal Device Optimizations */
-        
-        /* Large Tablets and Small Laptops (1024px - 1366px) */
-        @media (min-width: 1024px) and (max-width: 1366px) {
-            .header {
-                height: 100px;
-                padding: 0 30px;
-                max-width: 600px;
-                width: 90%;
-                border-radius: 20px;
-                margin: 0 auto;
-                margin-top: 20px;
-            }
-            
-            .page {
-                top: 100px;
-                height: calc(100% - 100px);
-            }
-            
-            .menu-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 25px;
-            }
-            
-            .menu-item {
-                padding: 25px;
-            }
-            
-            .menu-item img {
-                height: 160px;
-                object-fit: contain;
-                background: white;
-            }
-        }
-        
-        /* Samsung Tab A8 Landscape Mode - 1920x1200 */
-        @media (min-width: 1200px) and (max-width: 1920px) and (min-height: 800px) {
-            .header {
-                height: 70px; /* Smaller height for landscape */
-                max-width: 250px; /* Much smaller width for landscape mode */
-                width: 20%; /* Much smaller percentage for better centering */
-                margin: 0 auto;
-                margin-top: 15px; /* Reduced top margin */
-                padding: 0 15px; /* Reduced padding */
-                border-radius: 12px; /* Smaller border radius */
-            }
-            
-            .menu-container {
-                flex-direction: row;
-                height: 100%;
-                gap: 0;
-            }
-            
-            .menu-sidebar {
-                width: 200px; /* Same width maintained */
-                padding: 40px 15px; /* Consistent with base styles */
-                display: flex;
-                flex-direction: column;
-                justify-content: space-evenly; /* Equal spacing with gaps */
-                align-items: stretch;
-                max-height: none;
-                background: transparent; /* Remove container background */
-                border-radius: 0; /* Remove container border radius */
-                box-shadow: none; /* Remove container shadow */
-            }
-            
-            .category-btn {
-                flex: 0 0 auto; /* Maintain button size */
-                width: 100%;
-                min-width: 0;
-                padding: 45px 15px; /* Increased for landscape mode */
-                font-size: 28px; /* Larger font for landscape */
-                margin: 0;
-                min-height: 110px; /* Larger minimum height */
-                border-radius: 15px;
-                font-weight: 700;
-                text-align: center;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-                transition: all 0.3s ease;
-            }
-            
-            .category-btn:hover {
-                transform: scale(1.05);
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            }
-            
-            .category-btn.active {
-                transform: scale(1.08);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            }
-            
-            .menu-content {
-                padding: 25px 20px;
-                flex: 1;
-                overflow-y: auto;
-                background: linear-gradient(135deg, #fafafa, #f0f0f0);
-            }
-        }
-        
-        /* Tablets (768px - 1023px) */
-        @media (min-width: 768px) and (max-width: 1023px) {
-            .header {
-                height: 85px; /* Smaller height */
-                padding: 0 20px; /* Reduced padding */
-                max-width: 240px; /* Much smaller width */
-                width: 35%; /* Much smaller percentage for better centering */
-                border-radius: 15px; /* Smaller border radius */
-                margin: 0 auto;
-                margin-top: 15px; /* Reduced top margin */
-            }
-            
-            .page {
-                top: 120px;
-                height: calc(100% - 120px);
-            }
-            
-            .start-button, .category-btn, .add-to-cart-btn {
-                min-height: 50px;
-                font-size: 18px;
-                padding: 15px 25px;
-            }
-            
-            .menu-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
-            }
-            
-            .menu-item {
-                padding: 25px;
-            }
-            
-            .menu-item img {
-                height: 180px;
-                object-fit: contain;
-                background: white;
-            }
-            
-            .menu-sidebar {
-                width: 180px;
-                padding: 25px 15px;
-            }
-        }
-        
-        /* Samsung Tab A8 and Similar Tablets (768px - 1023px) - PRIORITY */
-        @media (min-width: 768px) and (max-width: 1023px) {
-            .header {
-                height: 80px; /* Smaller height */
-                padding: 0 20px; /* Reduced padding */
-                max-width: 220px; /* Much smaller width */
-                width: 30%; /* Much smaller percentage for better centering */
-                border-radius: 15px; /* Smaller border radius */
-                margin-top: 15px; /* Reduced top margin */
-            }
-            
-            .page {
-                top: 100px;
-                height: calc(100% - 100px);
-            }
-            
-            .start-button, .category-btn, .add-to-cart-btn {
-                min-height: 50px;
-                font-size: 18px;
-                padding: 15px 25px;
-            }
-            
-            .menu-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
-            }
-            
-            .menu-item {
-                padding: 25px;
-            }
-            
-            .menu-item img {
-                height: 180px;
-                object-fit: contain;
-                background: white;
-            }
-            
-            .menu-sidebar {
-                width: 180px;
-                padding: 30px 15px; /* Increased padding for better spacing */
-                justify-content: space-evenly; /* Equal spacing with gaps */
-            }
-            
-            .category-btn {
-                padding: 25px 15px; /* Increased padding for tablet */
-                font-size: 20px; /* Increased font size for tablet */
-                min-height: 70px; /* Increased minimum height */
-                border-radius: 12px;
-                font-weight: 700;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-                transition: all 0.3s ease;
-            }
-            
-            .category-btn:hover {
-                transform: scale(1.05);
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            }
-            
-            .category-btn.active {
-                transform: scale(1.08);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            }
-        }
-        
-        /* Mobile Landscape (568px - 767px) - Functional but not collapsed */
-        @media (min-width: 568px) and (max-width: 767px) {
-            .header {
-                height: 90px;
-                padding: 0 20px;
-                max-width: 500px;
-                width: 85%;
-                border-radius: 18px;
-                margin: 0 auto;
-                margin-top: 15px;
-            }
-            
-            .page {
-                top: 90px;
-                height: calc(100% - 90px);
-            }
-            
-            .start-button, .category-btn, .add-to-cart-btn {
-                min-height: 48px;
-                font-size: 17px;
-                padding: 14px 22px;
-            }
-            
-            .menu-container {
-                flex-direction: row; /* Keep side-by-side layout */
-            }
-            
-            .menu-sidebar {
-                width: 160px;
-                padding: 20px 10px;
-            }
-            
-            .category-btn {
-                width: 100%;
-                margin: 8px 0;
-                font-size: 16px;
-                padding: 12px 15px;
-            }
-            
-            .menu-content {
-                padding: 20px 15px;
-            }
-            
-            .menu-grid {
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-                gap: 18px;
-            }
-            
-            .menu-item {
-                padding: 22px;
-            }
-            
-            .menu-item img {
-                height: 150px;
-            }
-        }
-        
-        /* Mobile Portrait (320px - 567px) - Minimal collapse */
-        @media (max-width: 567px) {
-            .header {
-                height: 80px;
-                padding: 0 15px;
-                max-width: 400px;
-                width: 80%;
-                border-radius: 15px;
-                margin: 0 auto;
-                margin-top: 10px;
-            }
-            
-            .page {
-                top: 80px;
-                height: calc(100% - 80px);
-            }
-            
-            .start-button, .category-btn, .add-to-cart-btn {
-                min-height: 45px;
-                font-size: 16px;
-                padding: 12px 20px;
-            }
-            
-            .menu-container {
-                flex-direction: column;
-            }
-            
-            .menu-sidebar {
-                width: 100%;
-                padding: 15px;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-                justify-content: center;
-            }
-            
-            .category-btn {
-                width: auto;
-                min-width: 120px;
-                margin: 5px;
-                font-size: 15px;
-                padding: 12px 18px;
-            }
-            
-            .menu-content {
-                padding: 15px 10px;
-            }
-            
-            .menu-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 15px;
-            }
-            
-            .menu-item {
-                padding: 20px;
-            }
-            
-            .menu-item img {
-                height: 140px;
-                object-fit: contain;
-                background: white;
-            }
-            
-            .logo-container {
-                padding: 10px 15px;
-            }
-            
-            .logo {
-                height: 28px;
-            }
-        }
-        
-        /* Touch device optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            .start-button:hover, .category-btn:hover, .add-to-cart-btn:hover {
-                transform: none;
-            }
-            
-            .start-button:active, .category-btn:active, .add-to-cart-btn:active {
-                transform: scale(0.95);
-                transition: transform 0.1s ease;
-            }
-            
-            /* Larger touch targets for mobile */
-            .start-button, .category-btn, .add-to-cart-btn {
-                min-height: 44px; /* Apple's recommended minimum touch target */
-            }
-        }
-        
-        /* High DPI displays */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            .logo, .menu-item img {
-                image-rendering: -webkit-optimize-contrast;
-                image-rendering: crisp-edges;
-                image-rendering: pixelated;
-            }
-        }
-        
-        /* Global image rendering fixes */
-        .menu-item img {
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-            image-rendering: pixelated;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            transform: translateZ(0);
-            -webkit-transform: translateZ(0);
-        }
-        
-        /* Prevent design collapse on very small screens */
-        @media (max-width: 480px) {
-            .menu-item {
-                min-height: 200px;
-            }
-            
-            .menu-item img {
-                min-height: 120px;
-                object-fit: contain;
-                background: white;
-            }
-            
-            .start-button, .category-btn, .add-to-cart-btn {
-                min-width: 120px;
-                white-space: nowrap;
-            }
-            
-            .header {
-                min-height: 70px;
-            }
-            
-            .page {
-                min-height: calc(100vh - 70px);
-            }
-            
-            /* Responsive page title for small screens */
-            #page-title.page-title {
-                font-size: 12px !important;
-            }
-        }
-        
-        /* General tablet responsive styling for page titles */
-        @media (max-width: 1024px) {
-            #page-title.page-title {
-                font-size: 18px !important;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            #page-title.page-title {
-                font-size: 16px !important;
-            }
-        }
-        
-        /* Samsung Galaxy Tab A8 specific media queries */
-        @media screen and (max-width: 800px) {
-            #page-title.page-title {
-                font-size: 14px !important;
-            }
-        }
-        
-        @media screen and (max-width: 600px) {
-            #page-title.page-title {
-                font-size: 12px !important;
-            }
-        }
-        
-        /* Force smaller titles on any tablet-like device */
-        @media screen and (max-device-width: 1024px) and (orientation: portrait) {
-            #page-title.page-title {
-                font-size: 14px !important;
-            }
-        }
-        
-        @media screen and (max-device-width: 1024px) and (orientation: landscape) {
-            #page-title.page-title {
-                font-size: 16px !important;
-            }
-        }
-        
-        /* Samsung Tab A8 2021 - 10.5" 1920x1200 - EXACT OPTIMIZATION */
-        @media (min-width: 1200px) and (max-width: 1920px) and (min-height: 800px) {
-            .header {
-                height: 100px;
-                padding: 0 30px;
-                max-width: 600px;
-                width: 90%;
-                border-radius: 20px;
-                margin: 0 auto;
-                margin-top: 20px;
-            }
-            
-            /* Responsive page title for landscape tablet */
-            #page-title.page-title {
-                font-size: 20px !important;
-            }
-            
-            .page {
-                top: 100px;
-                height: calc(100% - 100px);
-            }
-            
-            .logo-large {
-                width: 400px;
-                height: auto;
-                margin-bottom: 60px;
-            }
-            
-            .halal-logo-container {
-                width: 80px;
-                height: 80px;
-                top: 10px;
-                left: 10px;
-            }
-            
-            .title {
-                font-size: 42px;
-                margin-top: 80px;
-                margin-bottom: 15px;
-            }
-            
-            .subtitle {
-                font-size: 22px;
-                margin-bottom: 35px;
-            }
-            
-            .minisubtitle {
-                font-size: 16px;
-                margin-bottom: 45px;
-            }
-            
-            .start-button {
-                padding: 25px 60px;
-                font-size: 26px;
-                min-height: 65px;
-            }
-            
-            .menu-container {
-                height: 100%;
-            }
-            
-            .menu-sidebar {
-                width: 200px;
-                padding: 30px 20px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: stretch;
-                height: 100%;
-            }
-            
-            .category-btn {
-                width: 100%;
-                padding: 18px 20px;
-                font-size: 18px;
-                margin: 12px 0;
-                min-height: 55px;
-            }
-            
-            .menu-content {
-                padding: 30px 25px;
-                height: calc(100vh - 200px);
-                max-height: calc(100vh - 200px);
-                overflow-y: auto;
-            }
-            
-            .menu-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 20px;
-                padding-bottom: 20px;
-            }
-            
-            .menu-item {
-                padding: 20px;
-                min-height: 320px;
-                display: flex;
-                flex-direction: column;
-            }
-            
-            .menu-item img {
-                height: 180px;
-                object-fit: contain;
-                border-radius: 10px;
-                margin-bottom: 15px;
-                background: white;
-                image-rendering: -webkit-optimize-contrast;
-                image-rendering: crisp-edges;
-                image-rendering: pixelated;
-                -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
-                transform: translateZ(0);
-                -webkit-transform: translateZ(0);
-            }
-            
-            .menu-item h3 {
-                font-size: 18px;
-                margin-bottom: 10px;
-                flex-grow: 0;
-            }
-            
-            .menu-item p {
-                font-size: 14px;
-                flex-grow: 1;
-                margin-bottom: 15px;
-            }
-            
-            .menu-item .price {
-                font-size: 22px;
-                margin-bottom: 18px;
-            }
-            
-            .add-to-cart-btn {
-                padding: 12px 20px;
-                font-size: 16px;
-                min-height: 45px;
-                margin-top: auto;
-                flex-shrink: 0;
-                -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
-                transform: translateZ(0);
-                -webkit-transform: translateZ(0);
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
-        }
-        
-        /* Samsung Tab A8 Portrait Mode - 1200x1920 */
-        @media (min-width: 800px) and (max-width: 1200px) and (min-height: 1200px) {
-            .header {
-                height: 60px; /* Much smaller height for portrait */
-                padding: 0 15px; /* Reduced padding */
-                max-width: 180px; /* Much smaller width for portrait - like web app example */
-                width: 25%; /* Smaller percentage for better centering */
-                border-radius: 12px; /* Smaller border radius */
-                margin-top: 10px; /* Reduced top margin */
-            }
-            
-            /* Responsive page title for portrait tablet */
-            #page-title.page-title {
-                font-size: 16px !important;
-            }
-            
-            .page {
-                top: 110px;
-                height: calc(100% - 110px);
-            }
-            
-            /* Landing page full height for portrait */
-            #landing-page {
-                top: 0 !important;
-                height: 100vh !important;
-            }
-            
-            #landing-page .main-content {
-                height: 100vh;
-                padding: 5px;
-                justify-content: flex-start;
-                overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            
-            .logo-container-main {
-                max-width: 280px;
-                padding: 6px;
-                margin: 0 auto 8px auto;
-                border-radius: 10px;
-            }
-            
-            .logo-large {
-                max-width: 240px;
-                height: auto;
-            }
-            
-            /* Promotional Section Portrait Optimizations */
-            .promotional-section {
-                max-width: 280px;
-                margin: 0 auto 8px auto;
-            }
-            
-            .promo-slider {
-                height: 60px;
-                border-radius: 8px;
-            }
-            
-            .play-icon {
-                font-size: 16px;
-                margin-bottom: 2px;
-            }
-            
-            .promo-placeholder h3 {
-                font-size: 10px;
-                margin-bottom: 1px;
-            }
-            
-            .promo-placeholder p {
-                font-size: 7px;
-            }
-            
-            .promo-content h3 {
-                font-size: 9px;
-                margin-bottom: 1px;
-            }
-            
-            .promo-content p {
-                font-size: 6px;
-            }
-            
-            .promo-badge {
-                padding: 1px 3px;
-                font-size: 6px;
-                top: -4px;
-                right: -4px;
-            }
-            
-            .promo-dots {
-                margin-top: 3px;
-            }
-            
-            .dot {
-                height: 6px;
-                width: 6px;
-                margin: 0 2px;
-            }
-            
-            .content {
-                padding: 12px 10px;
-                margin: 0 auto 10px auto;
-                max-width: 280px;
-                width: 85%;
-            }
-            
-            .halal-logo-container {
-                width: 50px;
-                height: 50px;
-                top: 6px;
-                left: 6px;
-            }
-            
-            .title {
-                font-size: 18px;
-                margin-top: 20px;
-                margin-bottom: 4px;
-            }
-            
-            .subtitle {
-                font-size: 11px;
-                margin-bottom: 4px;
-            }
-            
-            .minisubtitle {
-                font-size: 8px;
-                margin-bottom: 8px;
-            }
-            
-            .start-button {
-                padding: 10px 20px;
-                font-size: 13px;
-                min-height: 40px;
-                margin-top: 3px;
-            }
-            
-            /* Menu Page Portrait Optimizations */
-            .menu-sidebar {
-                width: 100%;
-                padding: 15px;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-                justify-content: center;
-                max-height: 100px;
-                margin-top: 10px;
-            }
-            
-            .category-btn {
-                width: auto;
-                min-width: 120px;
-                padding: 15px 20px; /* Increased padding for portrait mode */
-                font-size: 16px; /* Increased font size for portrait mode */
-                margin: 3px;
-                min-height: 50px; /* Increased minimum height */
-                border-radius: 12px;
-                font-weight: 700;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-                transition: all 0.3s ease;
-            }
-            
-            .category-btn:hover {
-                transform: scale(1.05);
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            }
-            
-            .category-btn.active {
-                transform: scale(1.08);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            }
-            
-            .menu-content {
-                padding: 20px 15px;
-                flex: 1;
-                overflow-y: auto;
-                margin-top: 10px;
-            }
-            
-            .menu-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-                max-width: 800px;
-                margin: 0 auto;
-            }
-            
-            .menu-item {
-                padding: 25px;
-                min-height: 350px;
-            }
-            
-            .menu-item img {
-                height: 200px;
-                object-fit: contain;
-                background: white;
-            }
-            
-            .menu-item h3 {
-                font-size: 20px;
-                margin-bottom: 10px;
-            }
-            
-            .menu-item p {
-                font-size: 16px;
-                margin-bottom: 15px;
-            }
-            
-            .menu-item .price {
-                font-size: 22px;
-                margin-bottom: 15px;
-            }
-            
-            .add-to-cart-btn {
-                padding: 15px 25px;
-                font-size: 16px;
-                min-height: 50px;
-            }
-            
-            /* Cart Page Portrait Optimizations */
-            .cart-container {
-                padding: 15px;
-            }
-            
-            .cart-item {
-                padding: 12px;
-                margin: 8px 0;
-            }
-            
-            .cart-item img {
-                width: 50px;
-                height: 50px;
-                margin-right: 12px;
-            }
-            
-            .cart-item h4 {
-                font-size: 14px;
-                margin-bottom: 4px;
-            }
-            
-            .cart-item .price {
-                font-size: 14px;
-            }
-            
-            .quantity-btn {
-                width: 25px;
-                height: 25px;
-                font-size: 14px;
-            }
-            
-            .quantity {
-                font-size: 16px;
-                min-width: 25px;
-            }
-            
-            .remove-btn {
-                padding: 4px 8px;
-                font-size: 12px;
-                margin-left: 8px;
-            }
-            
-            .cart-total {
-                padding: 15px;
-                margin-top: 15px;
-            }
-            
-            .cart-total h3 {
-                font-size: 20px;
-                margin-bottom: 8px;
-            }
-            
-            .total-amount {
-                font-size: 28px;
-            }
-            
-            /* Payment Page Portrait Optimizations */
-            .payment-container {
-                padding: 15px;
-            }
-            
-            .payment-options {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 15px;
-                margin-bottom: 25px;
-            }
-            
-            .payment-option {
-                padding: 15px;
-            }
-            
-            .payment-option img {
-                width: 50px;
-                height: 50px;
-                margin-bottom: 8px;
-            }
-            
-            .payment-option h4 {
-                font-size: 16px;
-            }
-            
-            .order-summary {
-                padding: 15px;
-                margin-top: 15px;
-            }
-            
-            .order-summary h3 {
-                font-size: 20px;
-                margin-bottom: 12px;
-            }
-            
-            .summary-item {
-                padding: 8px 0;
-                font-size: 14px;
-            }
-            
-            .summary-total {
-                padding: 12px 0;
-                font-size: 18px;
-            }
-            
-            /* Confirmation Page Portrait Optimizations */
-            .confirmation-content {
-                padding: 30px 25px;
-                max-width: 400px;
-                width: 85%;
-            }
-            
-            .order-number {
-                font-size: 40px;
-                margin: 15px 0;
-            }
-            
-            .confirmation-message {
-                font-size: 20px;
-                margin-bottom: 25px;
-            }
-            
-            .countdown {
-                font-size: 16px;
-                margin-top: 15px;
-            }
-            
-        /* Language Page Portrait Optimizations */
-        #language-page .header {
-            display: none !important;
-        }
-        
-        #language-page {
-            top: 0 !important;
-            height: 100vh !important;
-        }
-        
-            #language-title {
-                font-size: 28px !important;
-                padding: 12px 25px !important;
-                margin-bottom: 20px !important;
-            }
-            
-            #dining-title {
-                font-size: 28px !important;
-                padding: 12px 25px !important;
-                margin-bottom: 25px !important;
-            }
-            
-            .language-buttons {
-                gap: 15px;
-                margin-bottom: 20px;
-            }
-            
-            .lang-btn {
-                padding: 18px 25px;
-                font-size: 18px;
-                min-width: 180px;
-            }
-            
-            .dining-options h2 {
-                font-size: 28px;
-                margin-bottom: 15px;
-            }
-            
-            .dining-btn {
-                padding: 18px 25px;
-                font-size: 18px;
-                min-width: 180px;
-            }
-            
-            .menu-container {
-                flex-direction: column;
-                height: 100%;
-                gap: 0;
-            }
-            
-            .menu-sidebar {
-                width: 100%;
-                padding: 15px 20px 10px 20px;
-                display: flex;
-                flex-wrap: nowrap;
-                gap: 12px;
-                justify-content: center;
-                align-items: center;
-                max-height: 80px;
-                background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
-                border-radius: 0 0 15px 15px;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            .category-btn {
-                flex: 1;
-                min-width: 0;
-                padding: 12px 8px;
-                font-size: 14px;
-                margin: 0;
-                min-height: 45px;
-                border-radius: 12px;
-                font-weight: 600;
-                text-align: center;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
-                transform: translateZ(0);
-                -webkit-transform: translateZ(0);
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
-            
-            .menu-content {
-                padding: 20px 15px;
-                flex: 1;
-                overflow-y: auto;
-                background: linear-gradient(135deg, #fafafa, #f0f0f0);
-            }
-            
-            .menu-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 20px;
-            }
-            
-            .menu-item {
-                padding: 22px;
-                min-height: 320px;
-            }
-            
-            .menu-item img {
-                height: 180px;
-                object-fit: contain;
-                background: white;
-            }
-        }
-        
-        /* Samsung Tab A8 Ultra-Specific Portrait Mode - Improved Accessibility */
-        @media (min-width: 800px) and (max-width: 1200px) and (min-height: 1200px) and (orientation: portrait) {
-            .header {
-                height: 50px !important; /* Even smaller height for ultra-specific portrait */
-                max-width: 160px !important; /* Much smaller width - like web app example */
-                width: 22% !important; /* Smaller percentage for perfect centering */
-                border-radius: 10px !important; /* Smaller border radius */
-                margin-top: 8px !important; /* Reduced top margin */
-            }
-            
-            #landing-page .main-content {
-                height: 100vh !important;
-                padding: 10px !important;
-                justify-content: center !important;
-                overflow-y: auto !important;
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                -webkit-overflow-scrolling: touch !important;
-            }
-            
-            /* Responsive page title for ultra-specific portrait mode */
-            #page-title.page-title {
-                font-size: 14px !important;
-            }
-            
-            .logo-container-main {
-                max-width: 300px !important;
-                padding: 10px !important;
-                margin: 0 auto 15px auto !important;
-                border-radius: 10px !important;
-            }
-            
-            .logo-large {
-                max-width: 280px !important;
-                height: auto !important;
-            }
-            
-            .promotional-section {
-                max-width: 300px !important;
-                margin: 0 auto 15px auto !important;
-            }
-            
-            .promo-slider {
-                height: 80px !important;
-                border-radius: 8px !important;
-            }
-            
-            .content {
-                padding: 15px 10px !important;
-                margin: 0 auto 15px auto !important;
-                max-width: 300px !important;
-                width: 85% !important;
-            }
-            
-            .halal-logo-container {
-                width: 60px !important;
-                height: 60px !important;
-                top: 8px !important;
-                left: 8px !important;
-            }
-            
-            .title {
-                font-size: 20px !important;
-                margin-top: 15px !important;
-                margin-bottom: 8px !important;
-            }
-            
-            .subtitle {
-                font-size: 16px !important;
-                margin-bottom: 8px !important;
-            }
-            
-            .minisubtitle {
-                font-size: 14px !important;
-                margin-bottom: 15px !important;
-            }
-            
-            .start-button {
-                padding: 15px 30px !important;
-                font-size: 18px !important;
-                min-height: 60px !important;
-                margin-top: 10px !important;
-            }
-            
-            .play-icon {
-                font-size: 20px !important;
-                margin-bottom: 5px !important;
-            }
-            
-            .promo-placeholder h3 {
-                font-size: 14px !important;
-                margin-bottom: 5px !important;
-            }
-            
-            .promo-placeholder p {
-                font-size: 12px !important;
-            }
-            
-            .promo-content h3 {
-                font-size: 14px !important;
-                margin-bottom: 5px !important;
-            }
-            
-            .promo-content p {
-                font-size: 12px !important;
-            }
-            
-            .promo-badge {
-                padding: 3px 6px !important;
-                font-size: 10px !important;
-                top: -5px !important;
-                right: -5px !important;
-            }
-            
-            .promo-dots {
-                margin-top: 8px !important;
-            }
-            
-            .dot {
-                height: 8px !important;
-                width: 8px !important;
-                margin: 0 3px !important;
-            }
-        }
-        
-        /* Samsung Tab A8 Specific - Force 2 Column Layout */
-        @media (min-width: 800px) and (max-width: 1200px) and (min-height: 1200px) and (orientation: portrait) {
-            .menu-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 20px !important;
-                max-width: 800px !important;
-                margin: 0 auto !important;
-            }
-            
-            .menu-item {
-                padding: 25px !important;
-                min-height: 350px !important;
-            }
-            
-            .menu-item img {
-                height: 200px !important;
-                object-fit: contain !important;
-                background: white !important;
-            }
-            
-            .menu-item h3 {
-                font-size: 20px !important;
-                margin-bottom: 10px !important;
-            }
-            
-            .menu-item p {
-                font-size: 16px !important;
-                margin-bottom: 15px !important;
-            }
-            
-            .menu-item .price {
-                font-size: 22px !important;
-                margin-bottom: 15px !important;
-            }
-            
-            .add-to-cart-btn {
-                padding: 15px 25px !important;
-                font-size: 16px !important;
-                min-height: 50px !important;
-            }
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(5deg); }
-            75% { transform: rotate(-5deg); }
-            100% { transform: rotate(0deg); }
-        }
-        
-        .status {
-            display: none;
-        }
-        
-        /* Page Management */
-        .page {
-            display: none;
-            position: absolute;
-            top: 100px;
-            left: 0;
-            width: 100%;
-            height: calc(100% - 100px);
-            z-index: 10;
-        }
-        
-        .page.active {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Menu System Styles */
-        .menu-container {
-            flex: 1;
-            display: flex;
-            background: linear-gradient(135deg, #cca280, #cca280);
-        }
-        
-        .menu-sidebar {
-            width: 200px; /* Same width as requested */
-            background: transparent; /* Remove container background */
-            padding: 40px 15px; /* Increased top/bottom padding for better spacing */
-            box-shadow: none; /* Remove container shadow */
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly; /* Equal spacing with gaps between buttons */
-            align-items: stretch; /* Changed from center to stretch for full width buttons */
-            height: calc(100vh - 140px); /* Full height container */
-            border-radius: 0; /* Remove container border radius */
-        }
-        
-        .category-btn {
-            flex: 0 0 auto; /* Don't grow/shrink, maintain size */
-            width: 100%;
-            padding: 30px 15px; /* Increased padding for bigger buttons */
-            margin: 0; /* Remove margins, let justify-content handle spacing */
-            background: url('wood.png') repeat;
-            background-size: 200px 100%;
-            color: white;
-            border: none;
-            border-radius: 15px; /* More rounded corners */
-            font-size: 22px; /* Increased font size */
-            font-weight: 700; /* Bolder font */
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-height: 80px; /* Minimum height for touch-friendly buttons */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .category-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-        }
-        
-        .category-btn.active {
-            transform: scale(1.08);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-        
-        .menu-content {
-            flex: 1;
-            padding: 30px 20px;
-            overflow-y: auto;
-            margin-top: 20px;
-            height: calc(100vh - 200px);
-            max-height: calc(100vh - 200px);
-            /* Smooth scrolling for Samsung Tab A8 */
-            -webkit-overflow-scrolling: touch;
-            scroll-behavior: smooth;
-        }
-        
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding-bottom: 20px;
-        }
-        
-        .menu-item {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .menu-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .menu-item img {
-            width: 100%;
-            height: 150px;
-            object-fit: contain;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            background: white;
-        }
-        
-        .menu-item h3 {
-            font-size: 18px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        
-        .menu-item p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .menu-item .price {
-            font-size: 20px;
-            font-weight: bold;
-            color: #8B4513;
-            margin-bottom: 15px;
-        }
-        
-        .add-to-cart-btn {
-            background: url('wood.png') repeat;
-            background-size: 200px 100%;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .add-to-cart-btn:hover {
-            transform: scale(1.05);
-        }
-        
-        /* Cart Styles */
-        .cart-container {
-            flex: 1;
-            padding: 20px;
-            background: linear-gradient(135deg, #ddcbbd, #ddbcad);
-            overflow-y: auto;
-        }
-        
-        .cart-item {
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .cart-item img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-right: 15px;
-        }
-        
-        .cart-item-info {
-            flex: 1;
-        }
-        
-        .cart-item h4 {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .cart-item .price {
-            color: #8B4513;
-            font-weight: bold;
-        }
-        
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .quantity-btn {
-            background: #8B4513;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        .quantity {
-            font-size: 18px;
-            font-weight: bold;
-            min-width: 30px;
-            text-align: center;
-        }
-        
-        .cart-item-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-left: 10px;
-        }
-        
-        .customize-btn {
-            background: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 12px;
-            white-space: nowrap;
-        }
-        
-        .customize-btn:hover {
-            background: #218838;
-        }
-        
-        .remove-btn {
-            background: #dc3545;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        
-        .cart-total {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .cart-total h3 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        
-        .total-amount {
-            font-size: 32px;
-            font-weight: bold;
-            color: #8B4513;
-        }
-        
-        /* Payment Styles */
-        .payment-container {
-            flex: 1;
-            padding: 20px;
-            background: linear-gradient(135deg, #ddcbbd, #ddbcad);
-            overflow-y: auto;
-        }
-        
-        .payment-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .payment-option {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 3px solid transparent;
-        }
-        
-        .payment-option:hover, .payment-option.selected {
-            border-color: #8B4513;
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .payment-option img {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 10px;
-        }
-        
-        .payment-option h4 {
-            font-size: 18px;
-            color: #333;
-        }
-        
-        .order-summary {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-        
-        .order-summary h3 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 15px;
-        }
-        
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .summary-total {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            font-size: 20px;
-            font-weight: bold;
-            color: #8B4513;
-            border-top: 2px solid #8B4513;
-        }
-        
-        /* Order Confirmation Styles */
-        .confirmation-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #ddcbbd, #ddbcad);
-            text-align: center;
-        }
-        
-        .confirmation-content {
-            background: white;
-            border-radius: 25px;
-            padding: 50px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-            max-width: 500px;
-            width: 90%;
-        }
-        
-        .order-number {
-            font-size: 48px;
-            font-weight: bold;
-            color: #8B4513;
-            margin: 20px 0;
-        }
-        
-        .confirmation-message {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 30px;
-        }
-        
-        .countdown {
-            font-size: 18px;
-            color: #666;
-            margin-top: 20px;
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: #eee;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: #8B4513;
-            width: 0%;
-            transition: width 0.1s ease;
-        }
-
-        /* Boundary-based scroll highlighting */
-        .menu-content {
-            position: relative;
-            overflow-y: auto;
-        }
-
-        .scroll-top-highlight {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 60px;
-            background: linear-gradient(180deg, rgba(139, 69, 19, 0.8), rgba(139, 69, 19, 0.3));
-            z-index: 10;
-            pointer-events: none;
+            width: 100%;
+            height: 100%;
             opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 15px 15px 0 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .scroll-top-highlight.show {
+        .promo-slide.active {
             opacity: 1;
         }
 
-        .scroll-bottom-highlight {
+        .promo-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .promo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 20px;
+            background: url('wood.png') repeat;
+            background-size: 200px 100%;
+        }
+
+        /* Halal Badge */
+        .halal-badge {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: url('halal.png') no-repeat center center;
+            background-size: contain;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            z-index: 15;
+        }
+
+        /* Pagination Dots */
+        .pagination-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 15;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .dot.active {
+            background: white;
+        }
+
+        .dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Layer 3 - START ORDER Button (Bottom Section) */
+        .layer3 {
             position: absolute;
             bottom: 0;
             left: 0;
-            right: 0;
-            height: 60px;
-            background: linear-gradient(0deg, rgba(139, 69, 19, 0.8), rgba(139, 69, 19, 0.3));
+            width: 100%;
+            height: 15%;
             z-index: 10;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 0 0 15px 15px;
-        }
-
-        .scroll-bottom-highlight.show {
-            opacity: 1;
-        }
-
-        /* Add pulsing effect for top highlight */
-        .scroll-top-highlight.show {
-            animation: topPulse 1s ease-in-out infinite alternate;
-        }
-
-        @keyframes topPulse {
-            0% { background: linear-gradient(180deg, rgba(139, 69, 19, 0.6), rgba(139, 69, 19, 0.2)); }
-            100% { background: linear-gradient(180deg, rgba(139, 69, 19, 0.9), rgba(139, 69, 19, 0.4)); }
-        }
-
-        /* Add subtle pulse for bottom highlight */
-        .scroll-bottom-highlight.show {
-            animation: bottomPulse 1.5s ease-in-out infinite alternate;
-        }
-
-        @keyframes bottomPulse {
-            0% { background: linear-gradient(0deg, rgba(139, 69, 19, 0.6), rgba(139, 69, 19, 0.2)); }
-            100% { background: linear-gradient(0deg, rgba(139, 69, 19, 0.9), rgba(139, 69, 19, 0.4)); }
-        }
-
-        /* Samsung Tab A8 tablet view accessibility */
-        @media screen and (max-width: 1024px) and (orientation: portrait) {
-            body {
-                position: fixed !important;
-                top: 0 !important;
-                left: 0 !important;
-                width: 100vw !important;
-                height: 100vh !important;
-                overflow: hidden !important;
-            }
-            
-            .container {
-                width: 100vw !important;
-                height: 100vh !important;
-                overflow: hidden !important;
-            }
-            
-            .header {
-                width: 98% !important;
-                max-width: 98% !important;
-                margin-top: 5px !important;
-                z-index: 1000 !important;
-            }
-            
-            .menu-container {
-                height: calc(100vh - 100px) !important;
-            }
-            
-            .menu-content {
-                height: calc(100vh - 200px) !important;
-                margin-bottom: 80px !important;
-            }
-            
-            .customize-content {
-                margin-bottom: 100px !important;
-            }
-            
-            .cart-container {
-                margin-bottom: 100px !important;
-            }
-            
-            .payment-container {
-                margin-bottom: 100px !important;
-            }
-            
-            .customize-footer {
-                position: fixed !important;
-                bottom: 10px !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-                z-index: 1002 !important;
-                width: 90% !important;
-            }
-            
-            #menu-page div[style*="position: absolute"],
-            #cart-page div[style*="position: absolute"],
-            #payment-page div[style*="position: absolute"] {
-                position: fixed !important;
-                bottom: 20px !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-                z-index: 1001 !important;
-            }
-        }
-
-        /* Customization Page Styles */
-        .customize-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background: white;
-            height: 100%;
-        }
-        
-        /* Hide the main header on customization page */
-        .header.hidden {
-            display: none !important;
-        }
-        
-        /* Header with Logo and Title */
-        .customize-header {
-            height: 100px;
-            background: url('wood.png') repeat-x;
-            background-size: auto 100%;
-            background-color: #8B4513;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 100;
-            max-width: 600px;
-            width: 90%;
-            margin: 0 auto;
+        }
+
+        .button-container {
+            background: linear-gradient(135deg, #cca280, #cca280);
+            border: 3px solid #8B4513;
             border-radius: 20px;
-            margin-top: 20px;
-        }
-        
-        .logo-container {
-            background: white;
-            border-radius: 8px;
-            padding: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .customize-logo {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            animation: none !important;
-            transform: none !important;
-        }
-        
-        .customize-title {
-            flex: 1;
-            text-align: center;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        
-        /* Content Area */
-        .customize-content {
-            flex: 1;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        /* Item Info Display */
-        .item-info {
-            text-align: center;
-            margin-bottom: 20px;
-            background: white;
-            border-radius: 15px;
             padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             width: 100%;
-            max-width: 500px;
+            max-width: 100%;
         }
-        
-        .item-name {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        
-        .item-price {
-            font-size: 28px;
-            color: #8B4513;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Item Image */
-        .item-image-container {
-            margin-bottom: 30px;
-        }
-        
-        .item-image-placeholder {
-            width: 250px;
-            height: 250px;
-            background: #666;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .image-text {
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        
-        /* Quantity Section */
-        .quantity-section {
-            background: url('wood.png') repeat-x;
-            background-size: auto 100%;
-            background-color: #8B4513;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-        
-        .quantity-header-bar {
-            background: url('wood.png') repeat-x;
-            background-size: auto 100%;
-            background-color: #8B4513;
-            padding: 15px;
-            text-align: center;
-        }
-        
-        .quantity-header-text {
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        
-        .quantity-rows {
-            background: #f5f5f5;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            border-radius: 0 0 15px 15px;
-        }
-        
-        .quantity-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .quantity-row-label {
-            font-size: 16px;
-            color: #666;
-            font-weight: bold;
-        }
-        
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            background: url('wood.png') repeat-x;
-            background-size: auto 100%;
-            background-color: #8B4513;
-            border-radius: 8px;
-            padding: 4px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-        }
-        
-        .quantity-plus, .quantity-minus {
-            background: url('wood.png') repeat-x;
-            background-size: auto 100%;
-            background-color: #8B4513;
+
+        .start-order-btn {
+            background: url('wood.png') repeat;
+            background-size: 200px 100%;
             color: white;
             border: none;
-            width: 35px;
-            height: 35px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 20px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        }
-        
-        .quantity-plus:hover, .quantity-minus:hover {
-            background-color: #6B3410;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-        }
-        
-        .quantity-input {
-            background: white;
-            border: none;
-            width: 60px;
-            height: 35px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            margin: 0 5px;
-        }
-        
-        /* Footer Buttons */
-        .customize-footer {
-            display: flex;
-            justify-content: space-between;
+            border-radius: 15px;
             padding: 20px 40px;
-            background: hsl(36, 64%, 52%);
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        .cancel-btn, .save-btn {
-            background: white;
-            color: #8B4513;
-            border: 2px solid #8B4513;
-            border-radius: 12px;
-            padding: 15px 30px;
-            font-size: 16px;
+            font-size: 24px;
             font-weight: bold;
             cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
-            min-width: 120px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            min-width: 200px;
+            margin: 0 auto;
+            display: block;
         }
-        
-        .cancel-btn:hover, .save-btn:hover {
-            background: #f0f0f0;
-            border-color: #6B3410;
-            color: #6B3410;
+
+        .start-order-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .start-order-btn:active {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
-        
-        /* AGGRESSIVE FALLBACK - Force smaller titles on tablets */
-        @media screen and (max-width: 1024px) {
-            div#page-title.page-title {
-                font-size: 16px !important;
-            }
-        }
-        
-        @media screen and (max-width: 768px) {
-            div#page-title.page-title {
-                font-size: 14px !important;
-            }
-        }
-        
-        @media screen and (max-width: 600px) {
-            div#page-title.page-title {
-                font-size: 12px !important;
-            }
-        }
-        
-        /* UNIVERSAL TABLET FIX - This should work on ANY tablet */
-        @media screen and (max-device-width: 1024px) {
-            div#page-title.page-title {
-                font-size: 14px !important;
-                background-color: rgba(255, 0, 0, 0.1) !important; /* DEBUG: Red tint to confirm this rule is active */
+
+        /* Samsung A8 Tablet Optimization - 10.5" 1920x1200 */
+        @media (min-width: 1200px) and (max-width: 1920px) and (min-height: 800px) {
+            .layer1 {
+                height: 20%;
+                padding: 15px;
             }
             
-            .header {
-                height: 55px !important; /* Smaller height for tablets */
-                max-width: 170px !important; /* Smaller width like web app example */
-                width: 24% !important; /* Smaller percentage for better centering */
-                border-radius: 12px !important; /* Smaller border radius */
-                margin-top: 10px !important; /* Reduced top margin */
+            .ali-video {
+                width: 35%;
+                height: 100%;
+            }
+            
+            .layer2 {
+                top: 25%;
+                height: 60%;
+                padding: 25px;
+            }
+            
+            .promotional-section {
+                max-width: 1100px;
+            }
+            
+            .layer3 {
+                height: 15%;
+            }
+            
+            .start-order-btn {
+                padding: 25px 50px;
+                font-size: 28px;
+                min-width: 250px;
+            }
+            
+            .halal-badge {
+                width: 60px;
+                height: 60px;
+                bottom: 40px;
+                right: 40px;
+            }
+            
+            .dot {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .pagination-dots {
+                bottom: 40px;
+                gap: 15px;
             }
         }
-        
-        /* FORCE SMALL TITLES - Nuclear option */
-        @media screen and (max-width: 1200px) {
-            div#page-title.page-title {
-                font-size: 12px !important;
-                background-color: rgba(0, 255, 0, 0.1) !important; /* DEBUG: Green tint to confirm this rule is active */
+
+        /* General tablet responsive styling */
+        @media (max-width: 1024px) {
+            .start-order-btn {
+                padding: 20px 40px;
+                font-size: 24px;
+            }
+            
+            .halal-badge {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .promotional-section {
+                max-width: 900px;
             }
         }
+
+        @media (max-width: 768px) {
+            .layer1 {
+                height: 18%;
+                padding: 15px;
+            }
+            
+            .layer2 {
+                top: 20%;
+                height: 65%;
+                padding: 15px;
+            }
+            
+            .layer3 {
+                height: 17%;
+            }
+            
+            .start-order-btn {
+                padding: 18px 35px;
+                font-size: 22px;
+                min-width: 200px;
+            }
+            
+            .halal-badge {
+                width: 45px;
+                height: 45px;
+                bottom: 25px;
+                right: 25px;
+            }
+            
+            .dot {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header (always visible) -->
-        <div class="header">
-            <div class="page-title" id="page-title" style="flex: 1; text-align: center; color: white; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
-                <!-- Page title will be updated by JavaScript -->
-            </div>
-        </div>
-        <div class="header-logo" id="header-logo" style="display: none; position: absolute; top: 20px; left: 20px; z-index: 101;">
-            <img src="logo old.png" alt="Logo" style="width: 120px; height: 120px; object-fit: contain;">
-        </div>
-
-        <!-- Landing Page -->
-        <div id="landing-page" class="page active">
-            <div class="main-content">
-                <div class="background-doodles">
-                    <img src="doodle1.png" alt="Doodle 1" class="doodle1">
-                    <img src="doodle1.png" alt="Doodle 1-2" class="doodle1-2">
-                    <img src="doodle1.png" alt="Doodle 1-3" class="doodle1-3">
-                    <img src="doodle1.png" alt="Doodle 1-4" class="doodle1-4">
-                    <img src="doodle1.png" alt="Doodle 1-5" class="doodle1-5">
-                    <img src="doodle1.png" alt="Doodle 1-6" class="doodle1-6">
-                    <img src="doodle1.png" alt="Doodle 1-7" class="doodle1-7">
-                    <img src="doodle2.png" alt="Doodle 2" class="doodle2">
-                    <img src="doodle2.png" alt="Doodle 2-2" class="doodle2-2">
-                    <img src="doodle2.png" alt="Doodle 2-3" class="doodle2-3">
-                    <img src="doodle2.png" alt="Doodle 2-4" class="doodle2-4">
-                    <img src="doodle2.png" alt="Doodle 2-5" class="doodle2-5">
-                    <img src="doodle2.png" alt="Doodle 2-6" class="doodle2-6">
-                    <img src="doodle2.png" alt="Doodle 2-7" class="doodle2-7">
-                    <img src="doodle3.png" alt="Doodle 3" class="doodle3">
-                    <img src="doodle3.png" alt="Doodle 3-2" class="doodle3-2">
-                    <img src="doodle3.png" alt="Doodle 3-3" class="doodle3-3">
-                    <img src="doodle3.png" alt="Doodle 3-4" class="doodle3-4">
-                    <img src="doodle3.png" alt="Doodle 3-5" class="doodle3-5">
-                    <img src="doodle3.png" alt="Doodle 3-6" class="doodle3-6">
-                    <img src="doodle3.png" alt="Doodle 3-7" class="doodle3-7">
-                </div>
-                
-                <!-- Logo Container -->
-                <div class="logo-container-main">
-                    <video class="logo-large" autoplay muted loop playsinline>
-                        <source src="ALI ae.webm" type="video/webm">
+    <div class="background-doodles">
+        <img src="doodle1.png" alt="Doodle 1" class="doodle1">
+        <img src="doodle1.png" alt="Doodle 1-2" class="doodle1-2">
+        <img src="doodle1.png" alt="Doodle 1-3" class="doodle1-3">
+        <img src="doodle1.png" alt="Doodle 1-4" class="doodle1-4">
+        <img src="doodle1.png" alt="Doodle 1-5" class="doodle1-5">
+        <img src="doodle1.png" alt="Doodle 1-6" class="doodle1-6">
+        <img src="doodle1.png" alt="Doodle 1-7" class="doodle1-7">
+        <img src="doodle2.png" alt="Doodle 2" class="doodle2">
+        <img src="doodle2.png" alt="Doodle 2-2" class="doodle2-2">
+        <img src="doodle2.png" alt="Doodle 2-3" class="doodle2-3">
+        <img src="doodle2.png" alt="Doodle 2-4" class="doodle2-4">
+        <img src="doodle2.png" alt="Doodle 2-5" class="doodle2-5">
+        <img src="doodle2.png" alt="Doodle 2-6" class="doodle2-6">
+        <img src="doodle2.png" alt="Doodle 2-7" class="doodle2-7">
+        <img src="doodle3.png" alt="Doodle 3" class="doodle3">
+        <img src="doodle3.png" alt="Doodle 3-2" class="doodle3-2">
+        <img src="doodle3.png" alt="Doodle 3-3" class="doodle3-3">
+        <img src="doodle3.png" alt="Doodle 3-4" class="doodle3-4">
+        <img src="doodle3.png" alt="Doodle 3-5" class="doodle3-5">
+        <img src="doodle3.png" alt="Doodle 3-6" class="doodle3-6">
+        <img src="doodle3.png" alt="Doodle 3-7" class="doodle3-7">
+        <img src="doodle1.png" alt="Doodle 1-8" class="doodle1-8">
+        <img src="doodle2.png" alt="Doodle 2-8" class="doodle2-8">
+        <img src="doodle3.png" alt="Doodle 3-8" class="doodle3-8">
+        <img src="doodle1.png" alt="Doodle 1-9" class="doodle1-9">
+        <img src="doodle2.png" alt="Doodle 2-9" class="doodle2-9">
+        <img src="doodle3.png" alt="Doodle 3-9" class="doodle3-9">
+        <img src="doodle1.png" alt="Doodle 1-10" class="doodle1-10">
+        <img src="doodle2.png" alt="Doodle 2-10" class="doodle2-10">
+        <img src="doodle1.png" alt="Doodle 1-11" class="doodle1-11">
+        <img src="doodle2.png" alt="Doodle 2-11" class="doodle2-11">
+        <img src="doodle3.png" alt="Doodle 3-11" class="doodle3-11">
+        <img src="doodle1.png" alt="Doodle 1-12" class="doodle1-12">
+        <img src="doodle2.png" alt="Doodle 2-12" class="doodle2-12">
+    </div>
+    
+    
+    <!-- Layer 1 - ALI ae.webm (Top Section) -->
+    <div class="layer1">
+        <video class="ali-video" autoplay muted loop playsinline>
+            <source src="ALI ae.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <!-- Layer 2 - Video and Images (Middle Section) -->
+    <div class="layer2">
+        <!-- Promotional Slider -->
+        <div class="promotional-section">
+            <div class="promo-slider">
+                <!-- Video Slide -->
+                <div class="promo-slide active">
+                    <video class="promo-video" autoplay muted playsinline id="mainVideo">
+                        <source src="Ali, Muthu .mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                  </div>
-                
-                <!-- Promotional Section -->
-                <div class="promotional-section">
-                    <div class="promo-slider">
-                        <div class="promo-slide active">
-                            <div class="promo-video">
-                                <div class="promo-placeholder">
-                                    <div class="play-icon">▶</div>
-                                    <h3>Special Offer!</h3>
-                                    <p>20% OFF All Noodles</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="promo-slide">
-                            <div class="promo-banner">
-                                <div class="promo-content">
-                                    <h3> New Menu Items</h3>
-                                    <p>Try our latest delicious dishes</p>
-                                    <div class="promo-badge">NEW</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="promo-slide">
-                            <div class="promo-banner">
-                                <div class="promo-content">
-                                    <h3>🎉 Weekend Special</h3>
-                                    <p>Buy 2 Get 1 Free</p>
-                                    <div class="promo-badge">HOT</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="promo-dots">
-                        <span class="dot active" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
+                    <!-- Halal Badge inside video -->
+                    <div class="halal-badge">
                     </div>
                 </div>
                 
-                <div class="content">
-                    <h1 class="title">Welcome to</h1>
-                    <p class="subtitle">ALI MUTHU AH HOCK</p>
-                    <p class="minisubtitle">#1ForAll, All For 1</p>
-                    <button class="start-button" onclick="showPage('language-page')">
-                        START ORDER
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Language Selection Page -->
-        <div id="language-page" class="page">
-            <div class="language-content" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, #ddcbbd, #ddbcad); position: relative; overflow: hidden;">
-                <!-- Doodle Background -->
-                <div class="background-doodles">
-                    <img src="doodle1.png" alt="Doodle 1" class="doodle1">
-                    <img src="doodle1.png" alt="Doodle 1-2" class="doodle1-2">
-                    <img src="doodle1.png" alt="Doodle 1-3" class="doodle1-3">
-                    <img src="doodle1.png" alt="Doodle 1-4" class="doodle1-4">
-                    <img src="doodle1.png" alt="Doodle 1-5" class="doodle1-5">
-                    <img src="doodle1.png" alt="Doodle 1-6" class="doodle1-6">
-                    <img src="doodle1.png" alt="Doodle 1-7" class="doodle1-7">
-                    <img src="doodle2.png" alt="Doodle 2" class="doodle2">
-                    <img src="doodle2.png" alt="Doodle 2-2" class="doodle2-2">
-                    <img src="doodle2.png" alt="Doodle 2-3" class="doodle2-3">
-                    <img src="doodle2.png" alt="Doodle 2-4" class="doodle2-4">
-                    <img src="doodle2.png" alt="Doodle 2-5" class="doodle2-5">
-                    <img src="doodle2.png" alt="Doodle 2-6" class="doodle2-6">
-                    <img src="doodle2.png" alt="Doodle 2-7" class="doodle2-7">
-                    <img src="doodle3.png" alt="Doodle 3" class="doodle3">
-                    <img src="doodle3.png" alt="Doodle 3-2" class="doodle3-2">
-                    <img src="doodle3.png" alt="Doodle 3-3" class="doodle3-3">
-                    <img src="doodle3.png" alt="Doodle 3-4" class="doodle3-4">
-                    <img src="doodle3.png" alt="Doodle 3-5" class="doodle3-5">
-                    <img src="doodle3.png" alt="Doodle 3-6" class="doodle3-6">
-                    <img src="doodle3.png" alt="Doodle 3-7" class="doodle3-7">
-                </div>
-                
-                <!-- Language Selection Segment -->
-                <div style="background: white; border-radius: 25px; padding: 40px; text-align: center; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); max-width: 600px; width: 90%; position: relative; z-index: 10; margin-bottom: 20px;">
-                    <h1 id="language-title" style="font-size: 32px; color: #333; margin: -40px -40px 30px -40px; background: url('wood.png') repeat; background-size: 200px 100%; color: white; padding: 15px 40px; border-radius: 15px; display: block; width: calc(100% + 80px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">SELECT LANGUAGE</h1>
-                    <div class="language-buttons" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; justify-content: center; width: 100%; margin: 0 auto;">
-                        <button class="lang-btn" onclick="selectLanguage('english')" style="background: url('wood.png') repeat; background-size: 200px 100%; color: white; border: none; border-radius: 15px; padding: 20px 30px; font-size: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; min-height: 80px; width: 100%;"> English</button>
-                        <button class="lang-btn" onclick="selectLanguage('malay')" style="background: url('wood.png') repeat; background-size: 200px 100%; color: white; border: none; border-radius: 15px; padding: 20px 30px; font-size: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; min-height: 80px; width: 100%;"> Bahasa Malaysia</button>
-                        <button class="lang-btn" onclick="selectLanguage('mandarin')" style="background: url('wood.png') repeat; background-size: 200px 100%; color: white; border: none; border-radius: 15px; padding: 20px 30px; font-size: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; min-height: 80px; width: 100%;"> 中文</button>
-                        <button class="lang-btn" onclick="selectLanguage('tamil')" style="background: url('wood.png') repeat; background-size: 200px 100%; color: white; border: none; border-radius: 15px; padding: 20px 30px; font-size: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; min-height: 80px; width: 100%;"> தமிழ்</button>
+                <!-- Image Slides -->
+                <div class="promo-slide">
+                    <img src="assamL.jpg" alt="Assam Laksa" class="promo-image">
+                    <!-- Halal Badge inside image -->
+                    <div class="halal-badge">
                     </div>
                 </div>
                 
-                <!-- Dining Preference Segment -->
-                <div style="background: white; border-radius: 25px; padding: 40px; text-align: center; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); max-width: 600px; width: 90%; position: relative; z-index: 10;">
-                    <h2 id="dining-title" style="font-size: 32px; color: #333; margin: -40px -40px 30px -40px; background: url('wood.png') repeat; background-size: 200px 100%; color: white; padding: 15px 40px; border-radius: 15px; display: block; width: calc(100% + 80px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">DINING PREFERENCE</h2>
-                    <div class="dining-options">
-                        <div style="display: flex; gap: 20px; justify-content: center; width: 100%; margin: 0 auto;">
-                            <button class="dining-btn" onclick="selectDining('eat-in')" style="background: url('wood.png') repeat; background-size: 200px 100%; color: white; border: none; border-radius: 15px; padding: 20px 30px; font-size: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; min-height: 80px; flex: 1; width: 100%;"> EAT IN</button>
-                            <button class="dining-btn" onclick="selectDining('take-away')" style="background: url('wood.png') repeat; background-size: 200px 100%; color: white; border: none; border-radius: 15px; padding: 20px 30px; font-size: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; min-height: 80px; flex: 1; width: 100%;"> TAKE AWAY</button>
-                        </div>
+                <div class="promo-slide">
+                    <img src="addImg.jpg" alt="Advertisement Image" class="promo-image">
+                    <!-- Halal Badge inside image -->
+                    <div class="halal-badge">
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Menu Page -->
-        <div id="menu-page" class="page">
-            <div class="menu-container">
-                <div class="menu-sidebar">
-                    <button class="category-btn active" onclick="showCategory('rice')" id="rice-btn"> Rice</button>
-                    <button class="category-btn" onclick="showCategory('noodles')" id="noodles-btn"> Noodles</button>
-                    <button class="category-btn" onclick="showCategory('sides')" id="sides-btn"> Sides</button>
-                    <button class="category-btn" onclick="showCategory('drinks')" id="drinks-btn"> Drinks</button>
-                </div>
-                <div class="menu-content">
-                    <div class="scroll-top-highlight"></div>
-                    <div class="scroll-bottom-highlight"></div>
-                    <div id="menu-grid" class="menu-grid">
-                        <!-- Menu items will be populated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-            <!-- Navigation buttons for menu page -->
-            <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 100;">
-                <button class="start-button" onclick="showPage('language-page')" style="background: url('wood.png') repeat; background-size: 200px 100%; color: white; border: none; border-radius: 15px; padding: 15px 30px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease;">← Back</button>
-                <button class="start-button" onclick="showPage('cart-page')" style="background: url('wood.png') repeat; background-size: 200px 100%; color: white; border: none; border-radius: 15px; padding: 15px 30px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease;">🛒 Cart (<span id="cart-count">0</span>)</button>
-            </div>
+        
+        <!-- Pagination Dots -->
+        <div class="pagination-dots">
+            <div class="dot active" onclick="currentSlide(1)"></div>
+            <div class="dot" onclick="currentSlide(2)"></div>
+            <div class="dot" onclick="currentSlide(3)"></div>
         </div>
-
-        <!-- Cart Page -->
-        <div id="cart-page" class="page">
-            <div class="cart-container">
-                <div id="cart-items">
-                    <!-- Cart items will be populated by JavaScript -->
-                </div>
-                <div class="cart-total">
-                    <h3>Total Amount</h3>
-                    <div class="total-amount" id="total-amount">RM 0.00</div>
-                </div>
-            </div>
-            <!-- Navigation buttons for cart page -->
-            <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 100;">
-                <button class="start-button" onclick="showPage('menu-page')" style="background: url('wood.png') repeat; background-size: 200px 100%; color: white; border: none; border-radius: 15px; padding: 15px 30px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease;">← Back</button>
-                <button class="start-button" onclick="showPage('payment-page')" id="pay-button" style="background: url('wood.png') repeat; background-size: 200px 100%; color: white; border: none; border-radius: 15px; padding: 15px 30px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease;">💳 Pay</button>
-            </div>
-        </div>
-
-        <!-- Customization Page -->
-        <div id="customize-page" class="page">
-            <div class="customize-container">
-                <!-- Header with Logo and Title -->
-                <div class="customize-header">
-                    <div class="logo-container">
-                        <img src="logo old.png" alt="Logo" class="customize-logo">
-                    </div>
-                    <div class="customize-title">CUSTOMISE</div>
-                </div>
-                
-                <div class="customize-content">
-                    <!-- Item Name and Price -->
-                    <div class="item-info">
-                        <h2 class="item-name" id="customize-item-name">Item Name</h2>
-                        <div class="item-price" id="customize-item-price">RM 0.00</div>
-                    </div>
-                    
-                    <!-- Item Image -->
-                    <div class="item-image-container">
-                        <div class="item-image-placeholder">
-                            <span class="image-text">IMAGE</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Quantity Section -->
-                    <div class="quantity-section">
-                        <div class="quantity-header-bar">
-                            <span class="quantity-header-text">Extra Rice</span>
-                        </div>
-                        
-                        <div class="quantity-rows">
-                            <div class="quantity-row">
-                                <span class="quantity-row-label" id="extra-item-1">Extra Chilli Sauce</span>
-                                <div class="quantity-control">
-                                    <button class="quantity-plus" onclick="updateCustomizeQuantity(1, 1)">+</button>
-                                    <input type="number" class="quantity-input" id="quantity-1" value="1" min="0">
-                                    <button class="quantity-minus" onclick="updateCustomizeQuantity(1, -1)">-</button>
-                                </div>
-                            </div>
-                            
-                            <div class="quantity-row">
-                                <span class="quantity-row-label" id="extra-item-2">Extra Ketchup</span>
-                                <div class="quantity-control">
-                                    <button class="quantity-plus" onclick="updateCustomizeQuantity(2, 1)">+</button>
-                                    <input type="number" class="quantity-input" id="quantity-2" value="1" min="0">
-                                    <button class="quantity-minus" onclick="updateCustomizeQuantity(2, -1)">-</button>
-                                </div>
-                            </div>
-                            
-                            <div class="quantity-row">
-                                <span class="quantity-row-label" id="main-quantity-label">Quantity</span>
-                                <div class="quantity-control">
-                                    <button class="quantity-plus" onclick="updateCustomizeQuantity(0, 1)">+</button>
-                                    <input type="number" class="quantity-input" id="quantity-0" value="1" min="1">
-                                    <button class="quantity-minus" onclick="updateCustomizeQuantity(0, -1)">-</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Footer Buttons -->
-                <div class="customize-footer">
-                    <button class="cancel-btn" onclick="cancelCustomization()">CANCEL</button>
-                    <button class="save-btn" onclick="saveCustomization()">SAVE CHANGES</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Payment Page -->
-        <div id="payment-page" class="page">
-            <div class="payment-container">
-                <div class="payment-options">
-                    <div class="payment-option" onclick="selectPayment('card')">
-                        <div style="font-size: 48px; margin-bottom: 10px;">💳</div>
-                        <h4>Credit/Debit Card</h4>
-                    </div>
-                    <div class="payment-option" onclick="selectPayment('tng')">
-                        <div style="font-size: 48px; margin-bottom: 10px;">📱</div>
-                        <h4>Touch 'n Go</h4>
-                    </div>
-                    <div class="payment-option" onclick="selectPayment('qr')">
-                        <div style="font-size: 48px; margin-bottom: 10px;">📱</div>
-                        <h4>QR Code</h4>
-                    </div>
-                    <div class="payment-option" onclick="selectPayment('cash')">
-                        <div style="font-size: 48px; margin-bottom: 10px;">💵</div>
-                        <h4>Cash at Counter</h4>
-                    </div>
-                </div>
-                <div class="order-summary">
-                    <div class="summary-total">
-                        <span>Total:</span>
-                        <span id="payment-total">RM 0.00</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Navigation buttons for payment page -->
-            <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 100;">
-                <button class="start-button" onclick="showPage('cart-page')" style="background: url('wood.png') repeat; background-size: 200px 100%; color: white; border: none; border-radius: 15px; padding: 15px 30px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease;">← Back</button>
-                <button class="start-button" onclick="processPayment()" id="process-payment-btn" style="background: url('wood.png') repeat; background-size: 200px 100%; color: white; border: none; border-radius: 15px; padding: 15px 30px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease;">✅ Pay</button>
-            </div>
-        </div>
-
-        <!-- Order Confirmation Page -->
-        <div id="confirmation-page" class="page">
-            <div class="confirmation-container">
-                <div class="confirmation-content">
-                    <div style="font-size: 64px; margin-bottom: 20px;">✅</div>
-                    <h1 style="font-size: 36px; color: #333; margin-bottom: 20px;">Order Confirmed!</h1>
-                    <div class="order-number" id="order-number">#0001</div>
-                    <div class="confirmation-message">Thank you for your order!</div>
-                    <div class="countdown">Returning to main page in <span id="countdown-timer">5</span> seconds</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
     
-    <!-- Fixed Halal Logo -->
-    <img src="halal.png" alt="Halal" class="halal-logo-fixed">
-    
-    
-    <div class="status">
-        🎉 Kiosk Preview Ready!<br>
-        Click START ORDER to begin
+    <!-- Layer 3 - START ORDER Button (Bottom Section) -->
+    <div class="layer3">
+        <div class="button-container">
+                        <button class="start-order-btn" onclick="window.location.href='language-page-sample.html'">
+                            START ORDER
+                        </button>
+        </div>
     </div>
-    
+
+
     <script>
-        // Global state
-        let currentLanguage = 'english';
-        let diningPreference = '';
-        let cart = [];
-        let currentCategory = 'rice';
-        let selectedPayment = '';
-        let orderNumber = 1;
-        let idleTimer;
-        
-        // Suppress console errors for missing resources
-        window.addEventListener('error', function(e) {
-            if (e.target.tagName === 'IMG' && e.target.src.includes('.png')) {
-                console.log('Image load warning (non-critical):', e.target.src);
-                e.preventDefault();
-                return false;
-            }
-        });
-
-        // Language translations
-        const translations = {
-            english: {
-                startOrder: 'START ORDER',
-                selectLanguage: 'SELECT LANGUAGE',
-                diningPreference: 'DINING PREFERENCE',
-                eatIn: 'EAT IN',
-                takeAway: 'TAKE AWAY',
-                Cart: 'Cart',
-                totalAmount: 'TOTAL AMOUNT',
-                paymentMethod: 'PAYMENT METHOD',
-                orderConfirmed: 'ORDER CONFIRMED',
-                thankYou: 'THANK YOU FOR YOUR ORDER!',
-                returningToMain: 'RETURNING TO MAIN PAGE IN',
-                seconds: 'seconds',
-                addToCart: 'ADD TO CART',
-                back: 'BACK',
-                pay: 'PAY',
-                customize: 'CUSTOMIZE',
-                rice: 'RICE',
-                noodles: 'NOODLES',
-                sides: 'SIDES',
-                drinks: 'DRINKS',
-                creditDebitCard: 'CREDIT/DEBIT CARD',
-                touchNGo: 'TOUCH \'N GO',
-                qrCode: 'QR CODE',
-                cashAtCounter: 'CASH AT COUNTER',
-                total: 'TOTAL',
-                cartEmpty: 'YOUR CART IS EMPTY',
-                orderNumber: 'ORDER NUMBER',
-                quantity: 'QUANTITY',
-                remove: 'REMOVE',
-                customize: 'CUSTOMISE',
-                extraRice: 'EXTRA RICE',
-                extraNoodles: 'EXTRA NOODLES',
-                extraSides: 'EXTRA SIDES',
-                extraIceCubes: 'EXTRA ICE CUBES',
-                extraChilliSauce: 'EXTRA CHILLI SAUCE',
-                extraKetchup: 'EXTRA KETCHUP',
-                saveChanges: 'SAVE CHANGES',
-                cancel: 'CANCEL'
-            },
-            malay: {
-                startOrder: 'MULA PESANAN',
-                selectLanguage: 'PILIH BAHASA',
-                diningPreference: 'PILIHAN MAKAN',
-                eatIn: 'MAKAN DI SINI',
-                takeAway: 'BUNGKUS',
-                Cart: 'TROLI',
-                totalAmount: 'JUMLAH KESELURUHAN',
-                paymentMethod: 'KAEDAH PEMBAYARAN',
-                orderConfirmed: 'PESANAN DISAHKAN!',
-                thankYou: 'TERIMA KASIH ATAS PESANAN ANDA!',
-                returningToMain: 'KEMBALI KE HALAMAN UTAMA DALAM',
-                seconds: 'saat',
-                addToCart: 'TAMBAH KE TROLI',
-                back: 'KEMBALI',
-                pay: 'BAYAR',
-                customize: 'SESUAIKAN',
-                rice: 'NASI',
-                noodles: 'MEE',
-                sides: 'HIDANGAN SAMPINGAN',
-                drinks: 'MINUMAN',
-                creditDebitCard: 'KAD KREDIT/DEBIT',
-                touchNGo: 'TOUCH \'N GO',
-                qrCode: 'KOD QR',
-                cashAtCounter: 'TUNAI DI KAUNTER',
-                total: 'JUMLAH',
-                cartEmpty: 'TROLI ANDA KOSONG',
-                orderNumber: 'NOMBOR PESANAN',
-                quantity: 'KUANTITI',
-                remove: 'BUANG',
-                customize: 'SESUAIKAN',
-                extraRice: 'NASI TAMBAHAN',
-                extraNoodles: 'MEE TAMBAHAN',
-                extraSides: 'HIDANGAN TAMBAHAN',
-                extraIceCubes: 'AIS TAMBAHAN',
-                extraChilliSauce: 'SOS CILI TAMBAHAN',
-                extraKetchup: 'KETCHUP TAMBAHAN',
-                saveChanges: 'SIMPAN PERUBAHAN',
-                cancel: 'BATAL'
-            },
-            mandarin: {
-                startOrder: '开始点餐',
-                selectLanguage: '选择语言',
-                diningPreference: '用餐偏好',
-                eatIn: '堂食',
-                takeAway: '外带',
-                Cart: '购物车',
-                totalAmount: '总金额',
-                paymentMethod: '付款方式',
-                orderConfirmed: '订单确认！',
-                thankYou: '感谢您的订单！',
-                returningToMain: '返回主页面',
-                seconds: '秒',
-                addToCart: '加入购物车',
-                back: '返回',
-                pay: '付款',
-                customize: '自定义',
-                rice: '米饭',
-                noodles: '面条',
-                sides: '配菜',
-                drinks: '饮料',
-                creditDebitCard: '信用卡/借记卡',
-                touchNGo: 'Touch \'N Go',
-                qrCode: '二维码',
-                cashAtCounter: '柜台现金支付',
-                total: '总计',
-                cartEmpty: '您的购物车是空的',
-                orderNumber: '订单号',
-                quantity: '数量',
-                remove: '移除',
-                customize: '自定义',
-                extraRice: '额外米饭',
-                extraNoodles: '额外面条',
-                extraSides: '额外配菜',
-                extraIceCubes: '额外冰块',
-                extraChilliSauce: '额外辣椒酱',
-                extraKetchup: '额外番茄酱',
-                saveChanges: '保存更改',
-                cancel: '取消'
-            },
-            tamil: {
-                startOrder: 'ஆர்டர் தொடங்கு',
-                selectLanguage: 'மொழியைத் தேர்ந்தெடுக்கவும்',
-                diningPreference: 'உணவு விருப்பம்',
-                eatIn: 'இங்கே சாப்பிடு',
-                takeAway: 'எடுத்துச் செல்',
-                Cart: 'கடை வண்டி',
-                totalAmount: 'மொத்த தொகை',
-                orderConfirmed: 'ஆர்டர் உறுதிப்படுத்தப்பட்டது!',
-                thankYou: 'உங்கள் ஆர்டருக்கு நன்றி!',
-                returningToMain: 'முதன்மை பக்கத்திற்கு திரும்புகிறது',
-                seconds: 'வினாடிகள்',
-                addToCart: 'கார்ட்டில் சேர்',
-                back: 'திரும்பு',
-                pay: 'பணம் செலுத்து',
-                customize: 'தனிப்பயனாக்கு',
-                rice: 'அரிசி',
-                noodles: 'நூடுல்ஸ்',
-                sides: 'பக்க உணவு',
-                drinks: 'பானங்கள்',
-                creditDebitCard: 'கிரெடிட்/டெபிட் கார்டு',
-                touchNGo: 'Touch \'N Go',
-                qrCode: 'QR கோடு',
-                cashAtCounter: 'கவுண்டரில் பணம்',
-                total: 'மொத்தம்',
-                cartEmpty: 'உங்கள் கார்ட் காலியாக உள்ளது',
-                orderNumber: 'ஆர்டர் எண்',
-                quantity: 'அளவு',
-                remove: 'நீக்கு',
-                customize: 'தனிப்பயனாக்கு',
-                extraRice: 'கூடுதல் அரிசி',
-                extraNoodles: 'கூடுதல் நூடுல்ஸ்',
-                extraSides: 'கூடுதல் பக்க உணவு',
-                extraIceCubes: 'கூடுதல் பனிக்கட்டிகள்',
-                extraChilliSauce: 'கூடுதல் மிளகாய் சாஸ்',
-                extraKetchup: 'கூடுதல் கெட்சப்',
-                saveChanges: 'மாற்றங்களை சேமி',
-                cancel: 'ரத்து செய்'
-            }
-        };
-
-        // Page management
+        // Navigation function
         function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Update header styling based on page
-            const header = document.querySelector('.header');
-            if (pageId === 'landing-page') {
-                header.classList.add('landing-header');
-                header.classList.remove('language-header');
-            } else if (pageId === 'language-page') {
-                header.classList.add('language-header');
-                header.classList.remove('landing-header');
-            } else {
-                header.classList.remove('landing-header');
-                header.classList.remove('language-header');
-            }
-            
-            // Update page title in header
-            updatePageTitle(pageId);
-            
-            // Update cart count
-            updateCartCount();
-            
-            // Reset idle timer
-            resetIdleTimer();
-            
-            // Control halal logo visibility - show only on landing page
-            const halalLogo = document.querySelector('.halal-logo-fixed');
-            if (halalLogo) {
-                if (pageId === 'landing-page') {
-                    halalLogo.classList.add('show');
-                } else {
-                    halalLogo.classList.remove('show');
-                }
-            }
-            
-            // Control header logo visibility - show only on menu, cart, and payment pages
-            const headerLogo = document.getElementById('header-logo');
-            if (headerLogo) {
-                if (pageId === 'menu-page' || pageId === 'cart-page' || pageId === 'payment-page') {
-                    headerLogo.style.display = 'block';
-                } else {
-                    headerLogo.style.display = 'none';
-                }
+            if (pageId === 'language-page') {
+                window.location.href = 'language-page-sample.html';
             }
         }
 
-        function updatePageTitle(pageId) {
-            const pageTitle = document.getElementById('page-title');
-            const t = translations[currentLanguage];
-            
-            const titles = {
-                'landing-page': '',
-                'language-page': t.selectLanguage,
-                'menu-page': getMenuPageTitle(),
-                'cart-page': t.Cart,
-                'payment-page': t.paymentMethod,
-                'confirmation-page': t.orderConfirmed
-            };
-            
-            pageTitle.textContent = titles[pageId] || '';
-        }
+        let slideIndex = 1;
+        let slideInterval;
+        let isVideoPlaying = true;
 
-        function getMenuPageTitle() {
-            const t = translations[currentLanguage];
-            const categoryNames = {
-                rice: { en: 'RICE MENU', ms: 'MENU NASI', zh: '米饭菜单', ta: 'அரிசி மெனு' },
-                noodles: { en: 'NOODLES MENU', ms: 'MENU MEE', zh: '面条菜单', ta: 'நூடுல்ஸ் மெனு' },
-                sides: { en: 'SIDES MENU', ms: 'MENU HIDANGAN SAMPINGAN', zh: '配菜菜单', ta: 'பக்க உணவு மெனு' },
-                drinks: { en: 'DRINKS MENU', ms: 'MENU MINUMAN', zh: '饮料菜单', ta: 'பானங்கள் மெனு' },
-            };
-            
-            const langKey = currentLanguage === 'english' ? 'en' : 
-                           currentLanguage === 'malay' ? 'ms' : 
-                           currentLanguage === 'mandarin' ? 'zh' : 
-                           currentLanguage === 'tamil' ? 'ta' : 'en';
-            
-            return categoryNames[currentCategory] ? categoryNames[currentCategory][langKey] : t.Cart;
-        }
-        
-        
-        // Language selection
-        function selectLanguage(lang) {
-            currentLanguage = lang;
-            console.log('Selected language:', lang);
-            
-            // Show visual confirmation
-            const langNames = {
-                'english': 'ENGLISH',
-                'malay': 'BAHASA MALAYSIA', 
-                'mandarin': '中文',
-                'tamil': 'தமிழ்'
-            };
-            console.log(`Language changed to: ${langNames[lang]}`);
-            
-            // Update visual selection
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.style.border = '3px solid transparent';
-                btn.style.transform = 'none';
-            });
-            event.target.style.border = '3px solid #8B4513';
-            event.target.style.transform = 'scale(1.05)';
-            
-            // Update all text elements based on selected language
-            updateAllLanguageText();
-            
-            // Update page title
-            updatePageTitle(getCurrentPageId());
-            
-
-        }
-
-        function updateAllLanguageText() {
-            const t = translations[currentLanguage];
-            console.log('Updating language to:', currentLanguage);
-            console.log('Translation object:', t);
-            
-            // Update language page
-            const languagePage = document.getElementById('language-page');
-            if (languagePage) {
-                const title = document.getElementById('language-title');
-                if (title) {
-                    title.textContent = t.selectLanguage;
-                    console.log('Updated title to:', t.selectLanguage);
-                }
-                
-                const diningTitle = document.getElementById('dining-title');
-                if (diningTitle) {
-                    diningTitle.textContent = t.diningPreference;
-                    console.log('Updated dining title to:', t.diningPreference);
-                }
-                
-                const eatInBtn = languagePage.querySelector('button[onclick*="eat-in"]');
-                if (eatInBtn) {
-                    eatInBtn.innerHTML = ` ${t.eatIn}`;
-                    console.log('Updated eat in button to:', t.eatIn);
-                }
-                
-                const takeAwayBtn = languagePage.querySelector('button[onclick*="take-away"]');
-                if (takeAwayBtn) {
-                    takeAwayBtn.innerHTML = ` ${t.takeAway}`;
-                    console.log('Updated take away button to:', t.takeAway);
-                }
-            }
-            
-            // Update menu page
-            const menuPage = document.getElementById('menu-page');
-            if (menuPage) {
-                const categoryBtns = menuPage.querySelectorAll('.category-btn');
-                const categoryNames = {
-                    rice: { en: ' Rice', ms: ' Nasi', zh: ' 米饭', ta: ' அரிசி' },
-                    noodles: { en: ' Noodles', ms: ' Mee', zh: ' 面条', ta: ' நூடுல்ஸ்' },
-                    sides: { en: ' Sides', ms: ' Hidangan Sampingan', zh: ' 配菜', ta: ' பக்க உணவு' },
-                    drinks: { en: ' Drinks', ms: ' Minuman', zh: ' 饮料', ta: ' பானங்கள்' }
-                };
-                
-                categoryBtns.forEach((btn, index) => {
-                    const categories = ['rice', 'noodles', 'sides', 'drinks'];
-                    const category = categories[index];
-                    if (category && categoryNames[category]) {
-                        const langKey = currentLanguage === 'english' ? 'en' : 
-                                       currentLanguage === 'malay' ? 'ms' : 
-                                       currentLanguage === 'mandarin' ? 'zh' : 
-                                       currentLanguage === 'tamil' ? 'ta' : 'en';
-                        btn.textContent = categoryNames[category][langKey];
-                    }
-                });
-            }
-            
-            // Update cart page
-            const cartPage = document.getElementById('cart-page');
-            if (cartPage) {
-                const cartTitle = cartPage.querySelector('h2');
-                if (cartTitle) cartTitle.textContent = t.Cart;
-                
-                const totalTitle = cartPage.querySelector('h3');
-                if (totalTitle) totalTitle.textContent = t.totalAmount;
-            }
-            
-            
-            // Update confirmation page
-            const confirmationPage = document.getElementById('confirmation-page');
-            if (confirmationPage) {
-                const confirmTitle = confirmationPage.querySelector('h1');
-                if (confirmTitle) confirmTitle.textContent = t.orderConfirmed;
-                
-                const thankYouMsg = confirmationPage.querySelector('.confirmation-message');
-                if (thankYouMsg) thankYouMsg.textContent = t.thankYou;
-                
-                const countdownText = confirmationPage.querySelector('.countdown');
-                if (countdownText) {
-                    countdownText.innerHTML = `${t.returningToMain} <span id="countdown-timer">5</span> ${t.seconds}`;
-                }
-            }
-            
-            // Update footer buttons
-            updateFooterButtons(getCurrentPageId());
-        }
-
-        function getCurrentPageId() {
-            const activePage = document.querySelector('.page.active');
-            return activePage ? activePage.id : 'landing-page';
-        }
-
-        function updateFooterButtons(pageId) {
-            const t = translations[currentLanguage];
-            
-            // Update menu page buttons
-            if (pageId === 'menu-page') {
-                const backBtn = document.querySelector('#menu-page button[onclick*="language-page"]');
-                if (backBtn) backBtn.textContent = '← ' + t.back;
-                
-                const cartBtn = document.querySelector('#menu-page button[onclick*="cart-page"]');
-                if (cartBtn) {
-                    const cartCount = document.getElementById('cart-count');
-                    cartBtn.textContent = '🛒 ' + t.Cart + ' (' + (cartCount ? cartCount.textContent : '0') + ')';
-                }
-            }
-            
-            // Update cart page buttons
-            if (pageId === 'cart-page') {
-                const backBtn = document.querySelector('#cart-page button[onclick*="menu-page"]');
-                if (backBtn) backBtn.textContent = '← ' + t.back;
-                
-                const payBtn = document.querySelector('#cart-page button[onclick*="payment-page"]');
-                if (payBtn) payBtn.textContent = '💳 ' + t.pay;
-            }
-            
-            // Update payment page buttons
-            if (pageId === 'payment-page') {
-                const backBtn = document.querySelector('#payment-page button[onclick*="cart-page"]');
-                if (backBtn) backBtn.textContent = '← ' + t.back;
-                
-                const payBtn = document.querySelector('#payment-page button[onclick*="processPayment"]');
-                if (payBtn) payBtn.textContent = '✅ ' + t.pay;
-                
-                // Update payment options
-                const paymentOptions = document.querySelectorAll('#payment-page .payment-option h4');
-                if (paymentOptions.length >= 4) {
-                    paymentOptions[0].textContent = t.creditDebitCard;
-                    paymentOptions[1].textContent = t.touchNGo;
-                    paymentOptions[2].textContent = t.qrCode;
-                    paymentOptions[3].textContent = t.cashAtCounter;
-                }
-                
-                // Update total label
-                const totalLabel = document.querySelector('#payment-page .summary-total span:first-child');
-                if (totalLabel) totalLabel.textContent = t.total + ':';
-            }
-        }
-
-        function selectDining(preference) {
-            diningPreference = preference;
-            console.log('Selected dining preference:', preference);
-            // Proceed to menu
-            showPage('menu-page');
-            loadMenuItems();
-        }
-
-        // Menu management
-        function showCategory(category) {
-            currentCategory = category;
-            
-            // Update active category button
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Update page title
-            updatePageTitle('menu-page');
-            
-            loadMenuItems();
-        }
-
-        function loadMenuItems() {
-            const menuGrid = document.getElementById('menu-grid');
-            const items = getMenuItems(currentCategory);
-            const t = translations[currentLanguage];
-            
-            menuGrid.innerHTML = items.map(item => `
-                <div class="menu-item" onclick="addToCart(${item.id})" style="cursor: pointer;">
-                    <img src="${item.image}" alt="${item.name}">
-                    <h3>${getTranslatedItemName(item.name)}</h3>
-                    <div class="price">RM ${item.price.toFixed(2)}</div>
-                </div>
-            `).join('');
-        }
-
-        function getTranslatedItemName(name) {
-            const itemTranslations = {
-                // Rice Items
-                'Nasi Lemak Biasa': { en: 'Basic Nasi Lemak', ms: 'Nasi Lemak Biasa', zh: '普通椰浆饭', ta: 'நாசி லெமாக் பியாசா' },
-                'Nasi Lemak Ayam Goreng': { en: 'Nasi Lemak with Fried Chicken', ms: 'Nasi Lemak Ayam Goreng', zh: '椰浆饭配炸鸡', ta: 'நாசி லெமாக் அயாம் கோரெங்' },
-                'Nasi Lemak Ayam Sambal': { en: 'Nasi Lemak with Sambal Chicken', ms: 'Nasi Lemak Ayam Sambal', zh: '椰浆饭配叁巴鸡', ta: 'நாசி லெமாக் அயாம் சம்பல்' },
-                'Nasi Goreng Ali': { en: 'Ali Style Fried Rice', ms: 'Nasi Goreng Ali', zh: '阿里炒饭', ta: 'நாசி கோரெங் அலி' },
-                'Nasi Goreng Kampung': { en: 'Fried Rice from Kampung', ms: 'Nasi Goreng Kampung', zh: '乡村炒饭', ta: 'நாசி கோரெங் கம்புங்' },
-                'Nasi Goreng Cina': { en: ' Chicken Fried Rice ', ms: 'Nasi Goreng Cina', zh: '中式炒饭', ta: 'நாடி கோரெங் சீனா' },
-                'Nasi Kunyit': { en: 'Turmeric Rice', ms: 'Nasi Kunyit', zh: '黄姜饭', ta: 'நாசி குன்யிட்' },
-                'Hainan Chicken Rice': { en: 'Hainan Chicken Rice', ms: 'Nasi Ayam Hainan', zh: '海南鸡饭', ta: 'ஹைனான் கோழி அரிசி' },
-                'Hainan Chicken Chop': { en: 'Hainan Chicken Chop', ms: 'Chop Ayam Hainan', zh: '海南鸡扒', ta: 'ஹைனான் கோழி சாப்' },
-                'Chicken Porridge': { en: 'Chicken Porridge', ms: 'Bubur Ayam', zh: '鸡粥', ta: 'கோழி கஞ்சி' },
-                
-                // Noodle Items
-                'Ah Hock Ken Mee': { en: 'Ah Hock Ken Mee', ms: 'Ah Hock Ken Mee', zh: '亚福乾面', ta: 'ஆஹ் ஹாக் கென் மீ' },
-                'Assam Laksa': { en: 'Assam Laksa', ms: 'Assam Laksa', zh: '亚叁叻沙', ta: 'அசாம் லக்சா' },
-                'Bihun Goreng': { en: 'Bihun Goreng', ms: 'Bihun Goreng', zh: '炒米粉', ta: 'பிஹுன் கோரெங்' },
-                'Bihun Soto': { en: 'Bihun Soto', ms: 'Bihun Soto', zh: '索多米粉', ta: 'பிஹுன் சோட்டோ' },
-                'Cantonese Noodles': { en: 'Cantonese Noodles', ms: 'Mee Kantonis', zh: '广东面', ta: 'காண்டோனீஸ் நூடுல்ஸ்' },
-                'Kuey Teow': { en: 'Kuey Teow', ms: 'Kuey Teow', zh: '粿条', ta: 'குவே தியோ' },
-                'Mee Goreng': { en: 'Fried Noodles', ms: 'Mee Goreng', zh: '炒面', ta: 'மீ கோரெங்' },
-                'Mee Rebus': { en: 'Boiled Noodles', ms: 'Mee Rebus', zh: '卤面', ta: 'மீ ரெபுஸ்' },
-                'Mee Soto': { en: 'Soto Noodles', ms: 'Mee Soto', zh: '索多面', ta: 'மீ சோட்டோ' },
-                'Prawn Noodle': { en: 'Prawn Noodle', ms: 'Mee Udang', zh: '虾面', ta: 'இறால் நூடுல்' },
-                
-                // Side Items
-                'Ayam Crispy': { en: 'Ayam Crispy', ms: 'Ayam Crispy', zh: '脆皮鸡', ta: 'அயாம் க்ரிஸ்பி' },
-                'Spring Rolls': { en: 'Spring Rolls', ms: 'Lumpia', zh: '春卷', ta: 'ஸ்ப்ரிங் ரோல்ஸ்' },
-                'Satay': { en: 'Satay', ms: 'Satay', zh: '沙爹', ta: 'சடாய்' },
-                'Roti Canai': { en: 'Roti Canai', ms: 'Roti Canai', zh: '印度煎饼', ta: 'ரோட்டி கணை' },
-                'Ikan Goreng': { en: 'Fried Fish', ms: 'Ikan Goreng', zh: '炸鱼', ta: 'வறுத்த மீன்' },
-                'Sayur Goreng': { en: 'Fried Vegetables', ms: 'Sayur Goreng', zh: '炒蔬菜', ta: 'வறுத்த காய்கறிகள்' },
-                'Telur Goreng': { en: 'Fried Egg', ms: 'Telur Goreng', zh: '煎蛋', ta: 'வறுத்த முட்டை' },
-                'Sambal Goreng': { en: 'Stir-fried Sambal', ms: 'Sambal Goreng', zh: '炒叁巴', ta: 'வறுத்த சம்பல்' },
-                'Keropok Lekor': { en: 'Fish Crackers', ms: 'Keropok Lekor', zh: '鱼饼', ta: 'மீன் பிஸ்கட்' },
-                'Popiah': { en: 'Spring Roll', ms: 'Popiah', zh: '春卷', ta: 'ஸ்ப்ரிங் ரோல்' },
-                
-                // Drink Items
-                'Teh Tarik': { en: 'Pulled Tea', ms: 'Teh Tarik', zh: '拉茶', ta: 'தே தாரிக்' },
-                'Kopi O': { en: 'Black Coffee', ms: 'Kopi O', zh: '黑咖啡', ta: 'கோப்பி ஓ' },
-                'Fresh Juice': { en: 'Fresh Juice', ms: 'Jus Segar', zh: '鲜果汁', ta: 'புதிய சாறு' },
-                'Kopi Tarik': { en: 'Pulled Coffee', ms: 'Kopi Tarik', zh: '拉咖啡', ta: 'காபி தாரிக்' },
-                'Lime Juice': { en: 'Lime Juice', ms: 'Jus Limau', zh: '柠檬汁', ta: 'எலுமிச்சை சாறு' },
-                'Orange Juice': { en: 'Orange Juice', ms: 'Jus Oren', zh: '橙汁', ta: 'ஆரஞ்சு சாறு' },
-                'Milo': { en: 'Milo', ms: 'Milo', zh: '美禄', ta: 'மைலோ' },
-                'Bandung': { en: 'Bandung', ms: 'Bandung', zh: '玫瑰露', ta: 'பண்டுங்' },
-                'Air Kelapa': { en: 'Coconut Water', ms: 'Air Kelapa', zh: '椰子水', ta: 'தேங்காய் நீர்' },
-                'Teh O Ais': { en: 'Iced Tea', ms: 'Teh O Ais', zh: '冰茶', ta: 'பனி தேநீர்' }
-            };
-            
-            const langKey = currentLanguage === 'english' ? 'en' : 
-                           currentLanguage === 'malay' ? 'ms' : 
-                           currentLanguage === 'mandarin' ? 'zh' : 
-                           currentLanguage === 'tamil' ? 'ta' : 'en';
-            
-            return itemTranslations[name] ? itemTranslations[name][langKey] : name;
-        }
-
-        function getTranslatedItemDescription(description) {
-            const descTranslations = {
-                // Rice Items
-                'Traditional coconut rice with sambal': { en: 'Traditional coconut rice with sambal', ms: 'Nasi kelapa tradisional dengan sambal', zh: '传统椰浆饭配叁巴酱', ta: 'பாரம்பரிய தேங்காய் அரிசி சம்பலுடன்' },
-                'Coconut rice with fried chicken': { en: 'Coconut rice with fried chicken', ms: 'Nasi kelapa dengan ayam goreng', zh: '椰浆饭配炸鸡', ta: 'வறுத்த கோழியுடன் தேங்காய் அரிசி' },
-                'Coconut rice with sambal chicken': { en: 'Coconut rice with sambal chicken', ms: 'Nasi kelapa dengan ayam sambal', zh: '椰浆饭配叁巴鸡', ta: 'சம்பல் கோழியுடன் தேங்காய் அரிசி' },
-                'Ali style fried rice': { en: 'Ali style fried rice', ms: 'Nasi goreng gaya Ali', zh: '阿里炒饭', ta: 'அலி பாணி வறுத்த அரிசி' },
-                'Village style fried rice': { en: 'Village style fried rice', ms: 'Nasi goreng gaya kampung', zh: '乡村炒饭', ta: 'கிராம பாணி வறுத்த அரிசி' },
-                'Chinese style fried rice': { en: 'Chinese style fried rice', ms: 'Nasi goreng gaya Cina', zh: '中式炒饭', ta: 'சீன பாணி வறுத்த அரிசி' },
-                'Hainan style chicken rice': { en: 'Hainan style chicken rice', ms: 'Nasi ayam gaya Hainan', zh: '海南鸡饭', ta: 'ஹைனான் பாணி கோழி அரிசி' },
-                'Hainan style chicken chop': { en: 'Hainan style chicken chop', ms: 'Chop ayam gaya Hainan', zh: '海南鸡扒', ta: 'ஹைனான் பாணி கோழி சாப்' },
-                'Turmeric rice': { en: 'Turmeric rice', ms: 'Nasi kunyit', zh: '黄姜饭', ta: 'மஞ்சள் அரிசி' },
-                'Chicken porridge with condiments': { en: 'Chicken porridge with condiments', ms: 'Bubur ayam dengan lauk', zh: '鸡粥配菜', ta: 'பக்க உணவுடன் கோழி கஞ்சி' },
-                
-                // Noodle Items
-                'Traditional dry noodles with pork and shrimp': { en: 'Traditional dry noodles with pork and shrimp', ms: 'Mee kering tradisional dengan daging babi dan udang', zh: '传统乾面配猪肉虾', ta: 'பன்றி இறாலுடன் பாரம்பரிய உலர் நூடுல்ஸ்' },
-                'Sour and spicy fish noodle soup': { en: 'Sour and spicy fish noodle soup', ms: 'Sup mee ikan masam dan pedas', zh: '酸辣鱼面汤', ta: 'புளிப்பு மற்றும் காரமான மீன் நூடுல் சூப்' },
-                'Stir-fried rice vermicelli with vegetables': { en: 'Stir-fried rice vermicelli with vegetables', ms: 'Bihun goreng dengan sayuran', zh: '炒米粉配蔬菜', ta: 'காய்கறிகளுடன் வறுத்த அரிசி வெர்மிசெல்லி' },
-                'Rice vermicelli in clear soup': { en: 'Rice vermicelli in clear soup', ms: 'Bihun dalam sup jernih', zh: '清汤米粉', ta: 'தெளிவான சூப்பில் அரிசி வெர்மிசெல்லி' },
-                'Traditional Cantonese style noodles': { en: 'Traditional Cantonese style noodles', ms: 'Mee gaya Kantonis tradisional', zh: '传统广东面', ta: 'பாரம்பரிய காண்டோனீஸ் பாணி நூடுல்ஸ்' },
-                'Flat rice noodles': { en: 'Flat rice noodles', ms: 'Kuey teow nasi', zh: '粿条', ta: 'தட்டையான அரிசி நூடுல்ஸ்' },
-                'Fried yellow noodles': { en: 'Fried yellow noodles', ms: 'Mee kuning goreng', zh: '炒黄面', ta: 'வறுத்த மஞ்சள் நூடுல்ஸ்' },
-                'Yellow noodles in gravy': { en: 'Yellow noodles in gravy', ms: 'Mee kuning dalam kuah', zh: '黄面配酱汁', ta: 'சாற்றில் மஞ்சள் நூடுல்ஸ்' },
-                'Indonesian style noodle soup': { en: 'Indonesian style noodle soup', ms: 'Sup mee gaya Indonesia', zh: '印尼式面汤', ta: 'இந்தோனேசிய பாணி நூடுல் சூப்' },
-                'Prawn noodles in dark sauce': { en: 'Prawn noodles in dark sauce', ms: 'Mee udang dalam sos gelap', zh: '虾面配黑酱', ta: 'இருண்ட சாஸில் இறால் நூடுல்ஸ்' },
-                
-                // Side Items
-                'Crispy fried chicken': { en: 'Crispy fried chicken', ms: 'Ayam goreng rangup', zh: '脆皮炸鸡', ta: 'மிருதுவான வறுத்த கோழி' },
-                'Crispy vegetable spring rolls': { en: 'Crispy vegetable spring rolls', ms: 'Lumpia sayuran rangup', zh: '脆皮蔬菜春卷', ta: 'மிருதுவான காய்கறி ஸ்ப்ரிங் ரோல்ஸ்' },
-                'Grilled chicken skewers': { en: 'Grilled chicken skewers', ms: 'Sate ayam panggang', zh: '烤鸡肉串', ta: 'வறுத்த கோழி குச்சிகள்' },
-                'Flaky flatbread with curry': { en: 'Flaky flatbread with curry', ms: 'Roti canai dengan kari', zh: '印度煎饼配咖喱', ta: 'கறியுடன் ரோட்டி கணை' },
-                'Fried fish with sambal': { en: 'Fried fish with sambal', ms: 'Ikan goreng dengan sambal', zh: '炸鱼配叁巴', ta: 'சம்பலுடன் வறுத்த மீன்' },
-                'Stir-fried vegetables with sambal': { en: 'Stir-fried vegetables with sambal', ms: 'Sayur goreng dengan sambal', zh: '炒蔬菜配叁巴', ta: 'சம்பலுடன் வறுத்த காய்கறிகள்' },
-                'Fried egg with sambal': { en: 'Fried egg with sambal', ms: 'Telur goreng dengan sambal', zh: '煎蛋配叁巴', ta: 'சம்பலுடன் வறுத்த முட்டை' },
-                'Stir-fried sambal': { en: 'Stir-fried sambal', ms: 'Sambal goreng', zh: '炒叁巴', ta: 'வறுத்த சம்பல்' },
-                'Fish crackers': { en: 'Fish crackers', ms: 'Keropok ikan', zh: '鱼饼', ta: 'மீன் பிஸ்கட்' },
-                'Fresh spring roll with vegetables and shrimp': { en: 'Fresh spring roll with vegetables and shrimp', ms: 'Popiah segar dengan sayuran dan udang', zh: '新鲜春卷配蔬菜虾', ta: 'காய்கறி மற்றும் இறாலுடன் புதிய ஸ்ப்ரிங் ரோல்' },
-                
-                // Drink Items
-                'Pulled tea with condensed milk': { en: 'Pulled tea with condensed milk', ms: 'Teh tarik dengan susu pekat', zh: '拉茶配炼乳', ta: 'ஒடுங்கிய பாலுடன் தே தாரிக்' },
-                'Black coffee': { en: 'Black coffee', ms: 'Kopi hitam', zh: '黑咖啡', ta: 'கருப்பு காபி' },
-                'Fresh fruit juice': { en: 'Fresh fruit juice', ms: 'Jus buah segar', zh: '新鲜果汁', ta: 'புதிய பழ சாறு' },
-                'Pulled coffee with milk': { en: 'Pulled coffee with milk', ms: 'Kopi tarik dengan susu', zh: '拉咖啡配牛奶', ta: 'பாலுடன் காபி தாரிக்' },
-                'Fresh lime juice with ice': { en: 'Fresh lime juice with ice', ms: 'Jus limau segar dengan ais', zh: '新鲜柠檬汁配冰', ta: 'பனியுடன் புதிய எலுமிச்சை சாறு' },
-                'Fresh orange juice with ice': { en: 'Fresh orange juice with ice', ms: 'Jus oren segar dengan ais', zh: '新鲜橙汁配冰', ta: 'பனியுடன் புதிய ஆரஞ்சு சாறு' },
-                'Chocolate malt drink with milk': { en: 'Chocolate malt drink with milk', ms: 'Minuman malt coklat dengan susu', zh: '巧克力麦芽饮料配牛奶', ta: 'பாலுடன் சாக்லேட் மால்ட் பானம்' },
-                'Rose syrup drink with milk': { en: 'Rose syrup drink with milk', ms: 'Minuman sirap ros dengan susu', zh: '玫瑰糖浆饮料配牛奶', ta: 'பாலுடன் ரோஸ் சிரப் பானம்' },
-                'Fresh coconut water': { en: 'Fresh coconut water', ms: 'Air kelapa segar', zh: '新鲜椰子水', ta: 'புதிய தேங்காய் நீர்' },
-                'Iced tea without milk': { en: 'Iced tea without milk', ms: 'Teh ais tanpa susu', zh: '冰茶不加奶', ta: 'பால் இல்லாமல் பனி தேநீர்' }
-            };
-            
-            const langKey = currentLanguage === 'english' ? 'en' : 
-                           currentLanguage === 'malay' ? 'ms' : 
-                           currentLanguage === 'mandarin' ? 'zh' : 
-                           currentLanguage === 'tamil' ? 'ta' : 'en';
-            
-            return descTranslations[description] ? descTranslations[description][langKey] : description;
-        }
-
-        function getMenuItems(category) {
-            const menuData = {
-                rice: [
-                    { id: 1, name: 'Nasi Lemak Biasa', price: 8.50, image: 'Nasi Lemak Biasa.png', description: 'Traditional coconut rice with sambal' },
-                    { id: 2, name: 'Nasi Lemak Ayam Goreng', price: 9.50, image: 'Nasi Lemak Ayam Goreng.png', description: 'Coconut rice with fried chicken' },
-                    { id: 3, name: 'Nasi Lemak Ayam Sambal', price: 9.00, image: 'Nasi Lemak Ayam Sambal.png', description: 'Coconut rice with sambal chicken' },
-                    { id: 4, name: 'Nasi Goreng Ali', price: 7.00, image: 'Nasi Goreng Ali.png', description: 'Ali style fried rice' },
-                    { id: 5, name: 'Nasi Goreng Kampung', price: 7.50, image: 'Nasi Goreng Kampung.png', description: 'Village style fried rice' },
-                    { id: 6, name: 'Nasi Goreng Cina', price: 8.00, image: 'Nasi Goreng Cina.png', description: 'Chinese style fried rice' },
-                    { id: 7, name: 'Hainanese Chicken Rice', price: 10.50, image: 'Hainanese Chicken Rice.png', description: 'Hainan style chicken rice' },
-                    { id: 8, name: 'Hainan Chicken Chop', price: 12.00, image: 'Hainan Chicken Chop.png', description: 'Hainan style chicken chop' },
-                    { id: 9, name: 'Nasi Kunyit', price: 8.20, image: 'Nasi Kunyit.png', description: 'Turmeric rice' },
-                    { id: 10, name: 'Chicken Porridge', price: 6.50, image: 'Chicken Porridge.png', description: 'Chicken porridge with condiments' }
-                ],
-                noodles: [
-                    { id: 11, name: 'Ah Hock Ken Mee', price: 10.00, image: 'Ah Hock Ken Mee.png', description: 'Traditional dry noodles with pork and shrimp' },
-                    { id: 12, name: 'Assam Laksa', price: 9.50, image: 'Assam Laksa.png', description: 'Sour and spicy fish noodle soup' },
-                    { id: 13, name: 'Bihun Goreng', price: 7.50, image: 'Bihun Goreng.png', description: 'Stir-fried rice vermicelli with vegetables'},
-                    { id: 14, name: 'Bihun Soto', price: 8.50, image: 'Bihun Soto.png', description: 'Rice vermicelli in clear soup'},
-                    { id: 15, name: 'Cantonese Noodles', price: 8.00, image: 'Cantonese Noodles.png', description: 'Traditional Cantonese style noodles' },
-                    { id: 16, name: 'Kuey Teow', price: 7.00, image: 'Kuey Teow.png', description: 'Flat rice noodles' },
-                    { id: 17, name: 'Mee Goreng', price: 7.50, image: 'Mee Goreng.png', description: 'Fried yellow noodles' },
-                    { id: 18, name: 'Mee Rebus', price: 8.50, image: 'Mee Rebus.png', description: 'Yellow noodles in gravy' },
-                    { id: 19, name: 'Mee Soto', price: 8.80, image: 'Mee Soto.png', description: 'Indonesian style noodle soup' },
-                    { id: 20, name: 'Prawn Noodle', price: 9.50, image: 'Prawn noodle.png', description: 'Prawn noodles in dark sauce' }
-                ],
-                sides: [
-                    { id: 21, name: 'Ayam Crispy', price: 5.50, image: 'Ayam Crispy.png', description: 'Crispy fried chicken' },
-                    { id: 22, name: 'Spring Rolls', price: 4.00, image: 'doodle1.png', description: 'Crispy vegetable spring rolls' },
-                    { id: 23, name: 'Satay', price: 6.00, image: 'doodle2.png', description: 'Grilled chicken skewers' },
-                    { id: 24, name: 'Roti Canai', price: 3.50, image: 'doodle3.png', description: 'Flaky flatbread with curry' },
-                    { id: 25, name: 'Ikan Goreng', price: 6.50, image: 'doodle1.png', description: 'Fried fish with sambal' },
-                    { id: 26, name: 'Sayur Goreng', price: 3.00, image: 'doodle2.png', description: 'Stir-fried vegetables with sambal' },
-                    { id: 27, name: 'Telur Goreng', price: 2.50, image: 'doodle3.png', description: 'Fried egg with sambal' },
-                    { id: 28, name: 'Sambal Goreng', price: 4.50, image: 'doodle1.png', description: 'Stir-fried sambal' },
-                    { id: 29, name: 'Keropok Lekor', price: 3.50, image: 'doodle2.png', description: 'Fish crackers' },
-                    { id: 30, name: 'Popiah', price: 4.80, image: 'doodle3.png', description: 'Fresh spring roll with vegetables and shrimp' }
-                ],
-                drinks: [
-                    { id: 31, name: 'Teh Tarik', price: 3.00, image: 'doodle1.png', description: 'Pulled tea with condensed milk' },
-                    { id: 32, name: 'Kopi O', price: 2.50, image: 'doodle2.png', description: 'Black coffee' },
-                    { id: 33, name: 'Fresh Juice', price: 4.50, image: 'doodle3.png', description: 'Fresh fruit juice' },
-                    { id: 34, name: 'Kopi Tarik', price: 3.50, image: 'doodle1.png', description: 'Pulled coffee with milk' },
-                    { id: 35, name: 'Lime Juice', price: 3.80, image: 'doodle2.png', description: 'Fresh lime juice with ice' },
-                    { id: 36, name: 'Orange Juice', price: 4.00, image: 'doodle3.png', description: 'Fresh orange juice with ice' },
-                    { id: 37, name: 'Milo', price: 3.20, image: 'doodle1.png', description: 'Chocolate malt drink with milk' },
-                    { id: 38, name: 'Bandung', price: 3.50, image: 'doodle2.png', description: 'Rose syrup drink with milk' },
-                    { id: 39, name: 'Air Kelapa', price: 4.00, image: 'doodle3.png', description: 'Fresh coconut water' },
-                    { id: 40, name: 'Teh O Ais', price: 2.80, image: 'doodle1.png', description: 'Iced tea without milk'}
-                ],
-            };
-            return menuData[category] || [];
-        }
-
-        // Cart management
-        function addToCart(itemId) {
-            const allItems = [].concat(
-                getMenuItems('rice'),
-                getMenuItems('noodles'),
-                getMenuItems('sides'),
-                getMenuItems('drinks')
-            );
-            const item = allItems.find(i => i.id === itemId);
-            
-            const existingItem = cart.find(cartItem => cartItem.id === itemId);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ ...item, quantity: 1 });
-            }
-            
-            updateCartDisplay();
-            updateCartCount();
-        }
-
-        
-
-        function updateCartDisplay() {
-            const cartItems = document.getElementById('cart-items');
-            const totalAmount = document.getElementById('total-amount');
-            const t = translations[currentLanguage];
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = `<p style="text-align: center; color: #666; font-size: 18px;">${t.cartEmpty}</p>`;
-                totalAmount.textContent = 'RM 0.00';
-            } else {
-                cartItems.innerHTML = cart.map(item => `
-                    <div class="cart-item">
-                        <img src="${item.image}" alt="${item.name}">
-                        <div class="cart-item-info">
-                            <h4>${getTranslatedItemName(item.name)}</h4>
-                            <div class="price">RM ${item.price.toFixed(2)}</div>
-                        </div>
-                        <div class="quantity-controls">
-                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
-                            <span class="quantity">${item.quantity}</span>
-                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
-                        </div>
-                        <div class="cart-item-actions">
-                            <button class="customize-btn" onclick="customizeItem(${item.id})">${t.customize}</button>
-                            <button class="remove-btn" onclick="removeFromCart(${item.id})">${t.remove}</button>
-                        </div>
-                    </div>
-                `).join('');
-                
-                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                totalAmount.textContent = `RM ${total.toFixed(2)}`;
-            }
-        }
-
-        function updateQuantity(itemId, change) {
-            const item = cart.find(cartItem => cartItem.id === itemId);
-            if (item) {
-                item.quantity += change;
-                if (item.quantity <= 0) {
-                    removeFromCart(itemId);
-                } else {
-                    updateCartDisplay();
-                }
-            }
-        }
-
-        function removeFromCart(itemId) {
-            cart = cart.filter(item => item.id !== itemId);
-            updateCartDisplay();
-            updateCartCount();
-        }
-
-        // Customization functionality
-        let currentCustomizeItem = null;
-        let originalPrice = 0;
-        let customizationPrices = {
-            extraChilliSauce: 0.50,
-            extraKetchup: 0.30,
-            extraRice: 1.00,
-            extraNoodles: 1.50,
-            extraSides: 0.80,
-            extraIceCubes: 0.20
-        };
-
-        function customizeItem(itemId) {
-            currentCustomizeItem = cart.find(item => item.id === itemId);
-            if (currentCustomizeItem) {
-                // Store original price
-                originalPrice = currentCustomizeItem.price;
-                // Hide main header for customization page
-                document.querySelector('.header').classList.add('hidden');
-                showPage('customize-page');
-                updateCustomizePage();
-            }
-        }
-
-        function updateCustomizePage() {
-            if (!currentCustomizeItem) return;
-            
-            const t = translations[currentLanguage];
-            
-            // Update the image placeholder with actual item image
-            const imagePlaceholder = document.querySelector('.item-image-placeholder');
-            imagePlaceholder.innerHTML = `<img src="${currentCustomizeItem.image}" alt="${currentCustomizeItem.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">`;
-            
-            // Set the main quantity input to current item quantity
-            const mainQuantityInput = document.getElementById('quantity-0');
-            if (mainQuantityInput) {
-                mainQuantityInput.value = currentCustomizeItem.quantity;
-            }
-            
-            // Update the title
-            const customizeTitle = document.querySelector('.customize-title');
-            if (customizeTitle) {
-                customizeTitle.textContent = t.customize;
-            }
-            
-            // Update the section header based on item category
-            const sectionHeader = document.querySelector('.quantity-header-text');
-            if (sectionHeader) {
-                const itemCategory = getItemCategory(currentCustomizeItem.name);
-                switch(itemCategory) {
-                    case 'rice':
-                        sectionHeader.textContent = t.extraRice;
-                        break;
-                    case 'noodles':
-                        sectionHeader.textContent = t.extraNoodles;
-                        break;
-                    case 'sides':
-                        sectionHeader.textContent = t.extraSides;
-                        break;
-                    case 'drinks':
-                        sectionHeader.textContent = t.extraIceCubes;
-                        break;
-                    default:
-                        sectionHeader.textContent = t.extraRice;
-                }
-            }
-            
-            // Update the quantity row labels
-            const mainQuantityLabel = document.getElementById('main-quantity-label');
-            if (mainQuantityLabel) {
-                mainQuantityLabel.textContent = t.quantity;
-            }
-            
-            const extraItem1 = document.getElementById('extra-item-1');
-            const extraItem2 = document.getElementById('extra-item-2');
-            if (extraItem1) extraItem1.textContent = t.extraChilliSauce;
-            if (extraItem2) extraItem2.textContent = t.extraKetchup;
-            
-            // Update item name and price
-            const itemName = document.getElementById('customize-item-name');
-            const itemPrice = document.getElementById('customize-item-price');
-            if (itemName) itemName.textContent = getTranslatedItemName(currentCustomizeItem.name);
-            if (itemPrice) itemPrice.textContent = `RM ${currentCustomizeItem.price.toFixed(2)}`;
-            
-            // Update footer buttons
-            const cancelBtn = document.querySelector('.cancel-btn');
-            const saveBtn = document.querySelector('.save-btn');
-            if (cancelBtn) cancelBtn.textContent = t.cancel;
-            if (saveBtn) saveBtn.textContent = t.saveChanges;
-            
-            // Update price display
-            updateCustomizePrice();
-        }
-        
-        function getItemCategory(itemName) {
-            const allItems = {
-                rice: getMenuItems('rice'),
-                noodles: getMenuItems('noodles'),
-                sides: getMenuItems('sides'),
-                drinks: getMenuItems('drinks')
-            };
-            
-            for (const [category, items] of Object.entries(allItems)) {
-                if (items.find(item => item.name === itemName)) {
-                    return category;
-                }
-            }
-            return 'rice'; // default
-        }
-        
-        function updateCustomizeQuantity(index, change) {
-            const quantityInput = document.getElementById(`quantity-${index}`);
-            if (!quantityInput) return;
-            
-            let currentValue = parseInt(quantityInput.value) || 0;
-            let newValue = currentValue + change;
-            
-            // For main quantity (index 0), minimum is 1
-            if (index === 0) {
-                newValue = Math.max(1, newValue);
-            } else {
-                // For extra items, minimum is 0
-                newValue = Math.max(0, newValue);
-            }
-            
-            quantityInput.value = newValue;
-            
-            // Update price after quantity change
-            updateCustomizePrice();
-        }
-        
-        function updateCustomizePrice() {
-            if (!currentCustomizeItem) return;
-            
-            // Calculate base price (original price * main quantity)
-            const mainQuantity = parseInt(document.getElementById('quantity-0').value) || 1;
-            let totalPrice = originalPrice * mainQuantity;
-            
-            // Add extra item prices
-            const extraChilliQuantity = parseInt(document.getElementById('quantity-1').value) || 0;
-            const extraKetchupQuantity = parseInt(document.getElementById('quantity-2').value) || 0;
-            
-            const itemCategory = getItemCategory(currentCustomizeItem.name);
-            let extraPrice = 0;
-            
-            switch(itemCategory) {
-                case 'rice':
-                    extraPrice = (extraChilliQuantity * customizationPrices.extraChilliSauce) + 
-                                (extraKetchupQuantity * customizationPrices.extraKetchup);
-                    break;
-                case 'noodles':
-                    extraPrice = (extraChilliQuantity * customizationPrices.extraChilliSauce) + 
-                                (extraKetchupQuantity * customizationPrices.extraKetchup);
-                    break;
-                case 'sides':
-                    extraPrice = (extraChilliQuantity * customizationPrices.extraChilliSauce) + 
-                                (extraKetchupQuantity * customizationPrices.extraKetchup);
-                    break;
-                case 'drinks':
-                    extraPrice = (extraChilliQuantity * customizationPrices.extraIceCubes) + 
-                                (extraKetchupQuantity * customizationPrices.extraIceCubes);
-                    break;
-            }
-            
-            totalPrice += extraPrice;
-            
-            // Update the item price in cart
-            currentCustomizeItem.price = totalPrice / mainQuantity;
-            
-            // Update price display
-            const itemPrice = document.getElementById('customize-item-price');
-            if (itemPrice) {
-                itemPrice.textContent = `RM ${currentCustomizeItem.price.toFixed(2)}`;
-            }
-            
-            // Update cart display
-            updateCartDisplay();
-        }
-
-        function saveCustomization() {
-            if (!currentCustomizeItem) return;
-            
-            // Get the quantity from the main quantity input (index 0)
-            const quantityInput = document.getElementById('quantity-0');
-            if (quantityInput) {
-                const newQuantity = parseInt(quantityInput.value) || 1;
-                currentCustomizeItem.quantity = newQuantity;
-                
-                // Show main header again
-                document.querySelector('.header').classList.remove('hidden');
-                
-                // Update cart display and go back to cart
-                updateCartDisplay();
-                showPage('cart-page');
-            }
-        }
-
-        function cancelCustomization() {
-            // Show main header again
-            document.querySelector('.header').classList.remove('hidden');
-            
-            // Go back to cart without saving changes
-            showPage('cart-page');
-        }
-
-        function updateCartCount() {
-            const cartCountElement = document.getElementById('cart-count');
-            if (cartCountElement) {
-                cartCountElement.textContent = cart.length;
-            }
-            
-            // Update pay button state
-            const payButton = document.getElementById('pay-button');
-            if (payButton) {
-                if (cart.length === 0) {
-                    payButton.disabled = true;
-                    payButton.style.opacity = '0.5';
-                } else {
-                    payButton.disabled = false;
-                    payButton.style.opacity = '1';
-                }
-            }
-        }
-
-        // Payment management
-        function selectPayment(method) {
-            selectedPayment = method;
-            
-            // Update visual selection
-            document.querySelectorAll('.payment-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            event.target.closest('.payment-option').classList.add('selected');
-            
-            // Update order summary
-            updateOrderSummary();
-        }
-
-
-        function processPayment() {
-            if (!selectedPayment) {
-                alert('Please select a payment method');
-                return;
-            }
-            
-            // Generate order number
-            orderNumber = Math.floor(Math.random() * 9000) + 1000;
-            document.getElementById('order-number').textContent = `#${orderNumber}`;
-            
-            // Show confirmation page
-            showPage('confirmation-page');
-            
-            // Start countdown
-            startCountdown();
-        }
-
-        function startCountdown() {
-            let timeLeft = 5;
-            const countdownTimer = document.getElementById('countdown-timer');
-            const progressFill = document.getElementById('progress-fill');
-            
-            const countdown = setInterval(() => {
-                timeLeft--;
-                countdownTimer.textContent = timeLeft;
-                progressFill.style.width = `${((5 - timeLeft) / 5) * 100}%`;
-                
-                if (timeLeft <= 0) {
-                    clearInterval(countdown);
-                    // Reset everything and go back to landing page
-                    cart = [];
-                    selectedPayment = '';
-                    showPage('landing-page');
-                }
-            }, 1000);
-        }
-        
-        // Auto-reset timer
-        function resetIdleTimer() {
-            clearTimeout(idleTimer);
-            idleTimer = setTimeout(() => {
-                // Reset everything and go back to landing page
-                cart = [];
-                selectedPayment = '';
-                currentLanguage = 'english';
-                diningPreference = '';
-                showPage('landing-page');
-            }, 120000); // 2 minutes
-        }
-
-        // Promotional slider functionality
-        let currentPromoSlide = 1;
-        const totalPromoSlides = 3;
-        
-        function showPromoSlide(n) {
+        function showSlide(n) {
             const slides = document.querySelectorAll('.promo-slide');
             const dots = document.querySelectorAll('.dot');
             
-            if (n > totalPromoSlides) currentPromoSlide = 1;
-            if (n < 1) currentPromoSlide = totalPromoSlides;
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
             
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
             
-            slides[currentPromoSlide - 1].classList.add('active');
-            dots[currentPromoSlide - 1].classList.add('active');
+            slides[slideIndex - 1].classList.add('active');
+            dots[slideIndex - 1].classList.add('active');
         }
-        
+
         function currentSlide(n) {
-            currentPromoSlide = n;
-            showPromoSlide(currentPromoSlide);
-        }
-        
-        function nextPromoSlide() {
-            currentPromoSlide++;
-            showPromoSlide(currentPromoSlide);
-        }
-        
-        // Auto-advance promotional slides
-        function startPromoSlider() {
-            setInterval(nextPromoSlide, 4000); // Change slide every 4 seconds
+            showSlide(slideIndex = n);
+            // Reset auto-rotation timer
+            clearInterval(slideInterval);
+            startAutoRotation();
         }
 
-        // Boundary-based scroll highlighting
-        function handleScrollBoundaryHighlight() {
-            const menuContent = document.querySelector('.menu-content');
-            const topHighlight = menuContent?.querySelector('.scroll-top-highlight');
-            const bottomHighlight = menuContent?.querySelector('.scroll-bottom-highlight');
-            
-            if (!menuContent || !topHighlight || !bottomHighlight) return;
-
-            const scrollTop = menuContent.scrollTop;
-            const scrollHeight = menuContent.scrollHeight;
-            const clientHeight = menuContent.clientHeight;
-            
-            // Check if at the very top (within 5px)
-            if (scrollTop <= 5) {
-                topHighlight.classList.add('show');
-            } else {
-                topHighlight.classList.remove('show');
-            }
-            
-            // Check if at the very bottom (within 5px)
-            if (scrollTop >= scrollHeight - clientHeight - 5) {
-                bottomHighlight.classList.add('show');
-            } else {
-                bottomHighlight.classList.remove('show');
-            }
+        function nextSlide() {
+            showSlide(slideIndex += 1);
         }
 
-        // Initialize
+        function startAutoRotation() {
+            // Don't start auto-rotation if video is playing
+            if (isVideoPlaying) return;
+            
+            slideInterval = setInterval(() => {
+                nextSlide();
+            }, 4000); // 4 seconds for images
+        }
+
+        // Handle video events
         document.addEventListener('DOMContentLoaded', function() {
-            // Ensure landing page is active on load
-            showPage('landing-page');
+            const video = document.getElementById('mainVideo');
             
-            // Start promotional slider
-            startPromoSlider();
-            
-            // Reset timer on any interaction
-            document.addEventListener('click', resetIdleTimer);
-            document.addEventListener('mousemove', resetIdleTimer);
-            document.addEventListener('keypress', resetIdleTimer);
-            
-            // Add scroll event listeners for boundary highlighting
-            const menuContent = document.querySelector('.menu-content');
-            if (menuContent) {
-                menuContent.addEventListener('scroll', handleScrollBoundaryHighlight);
+            if (video) {
+                // Force video to play
+                video.play().catch(e => {
+                    console.log('Autoplay prevented:', e);
+                    // Try to play on user interaction
+                    document.addEventListener('click', function() {
+                        video.play();
+                    }, { once: true });
+                });
+
+                // When video ends, start auto-rotation for images
+                video.addEventListener('ended', function() {
+                    isVideoPlaying = false;
+                    slideIndex = 2; // Move to first image
+                    showSlide(slideIndex);
+                    startAutoRotation(); // Start 4-second intervals for images
+                });
+
+                // When video is playing, stop auto-rotation
+                video.addEventListener('play', function() {
+                    isVideoPlaying = true;
+                    clearInterval(slideInterval);
+                });
             }
-            
-            // Start the timer
-            resetIdleTimer();
-            
-            console.log('🎉 Complete Amakiosk Loaded Successfully!');
-            console.log('Features: Full kiosk flow, multi-language support, cart, payment system, promotional slider, boundary scroll highlighting');
-            console.log('Current active page:', document.querySelector('.page.active')?.id);
-            console.log('Header element:', document.querySelector('.header'));
-            
-            // JAVASCRIPT-BASED RESPONSIVE TITLE FIX
-            function adjustTitleForTablet() {
-                const pageTitle = document.getElementById('page-title');
-                const header = document.querySelector('.header');
-                if (!pageTitle || !header) return;
-                
-                const screenWidth = window.innerWidth;
-                const screenHeight = window.innerHeight;
-                const isTablet = screenWidth <= 1024 || screenHeight <= 1024;
-                
-                console.log('Screen dimensions:', screenWidth, 'x', screenHeight, 'isTablet:', isTablet);
-                
-                if (isTablet) {
-                    // Force smaller font size for tablets
-                    pageTitle.style.fontSize = '14px';
-                    pageTitle.style.backgroundColor = 'rgba(0, 0, 255, 0.1)'; // DEBUG: Blue tint
-                    
-                    // Make header smaller and more centralized like web app example
-                    header.style.height = '50px';
-                    header.style.maxWidth = '160px';
-                    header.style.width = '22%';
-                    header.style.borderRadius = '10px';
-                    header.style.marginTop = '8px';
-                    header.style.backgroundColor = 'rgba(0, 255, 0, 0.1)'; // DEBUG: Green tint for header
-                    
-                    console.log('Applied tablet fixes - title: 14px, header: smaller and centralized');
-                } else {
-                    // Reset to normal size for desktop
-                    pageTitle.style.fontSize = '24px';
-                    pageTitle.style.backgroundColor = 'transparent';
-                    header.style.height = '80px';
-                    header.style.maxWidth = '200px';
-                    header.style.width = '25%';
-                    header.style.borderRadius = '15px';
-                    header.style.marginTop = '15px';
-                    header.style.backgroundColor = '';
-                }
-            }
-            
-            // Run on page load
-            adjustTitleForTablet();
-            
-            // Run on window resize
-            window.addEventListener('resize', adjustTitleForTablet);
-            
-            // Run on orientation change (for tablets)
-            window.addEventListener('orientationchange', function() {
-                setTimeout(adjustTitleForTablet, 100); // Small delay to let orientation change complete
-            });
         });
     </script>
 </body>
