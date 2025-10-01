@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Landing Page Sample - Sketch Design</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#8B4513">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Kiosk">
+    
+    <!-- Additional Kiosk Mode Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Kiosk">
+    <meta name="msapplication-TileColor" content="#8B4513">
+    <meta name="msapplication-tap-highlight" content="no">
+    
+    <!-- Prevent zoom and ensure fullscreen -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ddcbbd, #ddbcad);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .background-doodles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .doodle1 {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            width: 200px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .doodle1-2 {
+            position: absolute;
+            top: 90%;
+            left: 70%;
+            width: 150px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 1.5s;
+        }
+        
+        .doodle1-3 {
+            position: absolute;
+            top: 30%;
+            left: 45%;
+            width: 180px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 3s;
+        }
+        
+        .doodle1-4 {
+            position: absolute;
+            top: 60%;
+            left: 15%;
+            width: 160px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 4.5s;
+        }
+        
+        .doodle1-5 {
+            position: absolute;
+            top: 80%;
+            left: 40%;
+            width: 140px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 6s;
+        }
+        
+        .doodle1-6 {
+            position: absolute;
+            top: 20%;
+            left: 80%;
+            width: 170px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 7.5s;
+        }
+        
+        .doodle1-7 {
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            width: 190px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 9s;
+        }
+        
+        .doodle2 {
+            position: absolute;
+            top: 15%;
+            left: 85%;
+            width: 120px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 0.5s;
+        }
+        
+        .doodle2-2 {
+            position: absolute;
+            top: 75%;
+            left: 10%;
+            width: 100px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 2s;
+        }
+        
+        .doodle2-3 {
+            position: absolute;
+            top: 40%;
+            left: 60%;
+            width: 110px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 3.5s;
+        }
+        
+        .doodle2-4 {
+            position: absolute;
+            top: 65%;
+            left: 35%;
+            width: 130px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 5s;
+        }
+        
+        .doodle2-5 {
+            position: absolute;
+            top: 25%;
+            left: 20%;
+            width: 90px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 6.5s;
+        }
+        
+        .doodle2-6 {
+            position: absolute;
+            top: 85%;
+            left: 55%;
+            width: 105px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 8s;
+        }
+        
+        .doodle2-7 {
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            width: 115px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 9.5s;
+        }
+        
+        .doodle3 {
+            position: absolute;
+            top: 35%;
+            left: 75%;
+            width: 80px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 1s;
+        }
+        
+        .doodle3-2 {
+            position: absolute;
+            top: 70%;
+            left: 5%;
+            width: 70px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 2.5s;
+        }
+        
+        .doodle3-3 {
+            position: absolute;
+            top: 45%;
+            left: 30%;
+            width: 85px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 4s;
+        }
+        
+        .doodle3-4 {
+            position: absolute;
+            top: 15%;
+            left: 40%;
+            width: 75px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 5.5s;
+        }
+        
+        .doodle3-5 {
+            position: absolute;
+            top: 55%;
+            left: 65%;
+            width: 90px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 7s;
+        }
+        
+        .doodle3-6 {
+            position: absolute;
+            top: 95%;
+            left: 25%;
+            width: 65px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 8.5s;
+        }
+        
+        .doodle3-7 {
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            width: 95px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 10s;
+        }
+        
+        /* Additional bottom right doodles */
+        .doodle1-8 {
+            position: absolute;
+            top: 85%;
+            right: 5%;
+            width: 160px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 2s;
+        }
+        
+        .doodle2-8 {
+            position: absolute;
+            top: 95%;
+            right: 15%;
+            width: 120px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 3.5s;
+        }
+        
+        .doodle3-8 {
+            position: absolute;
+            top: 90%;
+            right: 8%;
+            width: 85px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 5s;
+        }
+        
+        /* Additional left side and center doodles */
+        .doodle1-9 {
+            position: absolute;
+            top: 40%;
+            left: 2%;
+            width: 140px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 1.2s;
+        }
+        
+        .doodle2-9 {
+            position: absolute;
+            top: 60%;
+            left: 1%;
+            width: 110px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 2.8s;
+        }
+        
+        .doodle3-9 {
+            position: absolute;
+            top: 80%;
+            left: 3%;
+            width: 90px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 4.2s;
+        }
+        
+        .doodle1-10 {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            width: 130px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 0.8s;
+        }
+        
+        .doodle2-10 {
+            position: absolute;
+            top: 65%;
+            left: 48%;
+            width: 100px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 2.2s;
+        }
+        
+        /* Additional right side doodles */
+        .doodle1-11 {
+            position: absolute;
+            top: 35%;
+            right: 2%;
+            width: 150px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 1.8s;
+        }
+        
+        .doodle2-11 {
+            position: absolute;
+            top: 55%;
+            right: 1%;
+            width: 125px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 3.2s;
+        }
+        
+        .doodle3-11 {
+            position: absolute;
+            top: 75%;
+            right: 3%;
+            width: 95px;
+            height: auto;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite 4.8s;
+        }
+        
+        .doodle1-12 {
+            position: absolute;
+            top: 15%;
+            right: 12%;
+            width: 135px;
+            height: auto;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite 0.6s;
+        }
+        
+        .doodle2-12 {
+            position: absolute;
+            top: 45%;
+            right: 8%;
+            width: 115px;
+            height: auto;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite 2.4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Layer 1 - ALI ae.webm (Top Section) */
+        .layer1 {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 25%;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .ali-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        /* Layer 2 - Video and Images (Middle Section) */
+        .layer2 {
+            position: absolute;
+            top: 30%;
+            left: 0;
+            width: 100%;
+            height: 55%;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .promotional-section {
+            width: 100%;
+            max-width: 1000px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .promo-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .promo-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .promo-slide.active {
+            opacity: 1;
+        }
+
+        .promo-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .promo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 20px;
+            background: url('wood.png') repeat;
+            background-size: 200px 100%;
+        }
+
+        /* Halal Badge */
+        .halal-badge {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 200px;
+            height: 200px;
+            background: url('halal.png') no-repeat center center;
+            background-size: contain;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            z-index: 15;
+        }
+
+        /* Pagination Dots */
+        .pagination-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 15;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .dot.active {
+            background: white;
+        }
+
+        .dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Layer 3 - START ORDER Button (Bottom Section) */
+        .layer3 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15%;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-container {
+            background: linear-gradient(135deg, #cca280, #cca280);
+            border: 3px solid #8B4513;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .start-order-btn {
+            background: url('wood.png') repeat;
+            background-size: 200px 100%;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            min-width: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .start-order-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .start-order-btn:active {
+            transform: translateY(-2px);
+        }
+
+        /* Samsung A8 Tablet Optimization - 10.5" 1920x1200 */
+        @media (min-width: 1200px) and (max-width: 1920px) and (min-height: 800px) {
+            body {
+                height: 100vh;
+                overflow: hidden;
+            }
+            
+            .layer1 {
+                height: 25%;
+                padding: 20px;
+                width: 50%;
+            }
+            
+            .ali-video {
+                width: 100%;
+                height: 100%;
+                max-width: 400px;
+            }
+            
+            .layer2 {
+                top: 30%;
+                height: 50%;
+                padding: 30px;
+            }
+            
+            .promotional-section {
+                max-width: 1200px;
+                height: 100%;
+            }
+            
+            .promo-slider {
+                height: 100%;
+            }
+            
+            .layer3 {
+                height: 20%;
+                padding: 20px;
+            }
+            
+            .button-container {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            .start-order-btn {
+                padding: 30px 60px;
+                font-size: 32px;
+                min-width: 300px;
+            }
+            
+            .halal-badge {
+                width: 100px;
+                height: 100px;
+                bottom: 50px;
+                right: 50px;
+            }
+            
+            .dot {
+                width: 18px;
+                height: 18px;
+            }
+            
+            .pagination-dots {
+                bottom: 50px;
+                gap: 20px;
+            }
+        }
+
+        /* General tablet responsive styling */
+        @media (max-width: 1024px) {
+            .start-order-btn {
+                padding: 20px 40px;
+                font-size: 24px;
+            }
+            
+            .halal-badge {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .promotional-section {
+                max-width: 900px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .layer1 {
+                height: 18%;
+                padding: 15px;
+            }
+            
+            .layer2 {
+                top: 20%;
+                height: 65%;
+                padding: 15px;
+            }
+            
+            .layer3 {
+                height: 17%;
+            }
+            
+            .start-order-btn {
+                padding: 18px 35px;
+                font-size: 22px;
+                min-width: 200px;
+            }
+            
+            .halal-badge {
+                width: 70px;
+                height: 70px;
+                bottom: 25px;
+                right: 25px;
+            }
+            
+            .dot {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background-doodles">
+        <img src="doodle1.png" alt="Doodle 1" class="doodle1">
+        <img src="doodle1.png" alt="Doodle 1-2" class="doodle1-2">
+        <img src="doodle1.png" alt="Doodle 1-3" class="doodle1-3">
+        <img src="doodle1.png" alt="Doodle 1-4" class="doodle1-4">
+        <img src="doodle1.png" alt="Doodle 1-5" class="doodle1-5">
+        <img src="doodle1.png" alt="Doodle 1-6" class="doodle1-6">
+        <img src="doodle1.png" alt="Doodle 1-7" class="doodle1-7">
+        <img src="doodle2.png" alt="Doodle 2" class="doodle2">
+        <img src="doodle2.png" alt="Doodle 2-2" class="doodle2-2">
+        <img src="doodle2.png" alt="Doodle 2-3" class="doodle2-3">
+        <img src="doodle2.png" alt="Doodle 2-4" class="doodle2-4">
+        <img src="doodle2.png" alt="Doodle 2-5" class="doodle2-5">
+        <img src="doodle2.png" alt="Doodle 2-6" class="doodle2-6">
+        <img src="doodle2.png" alt="Doodle 2-7" class="doodle2-7">
+        <img src="doodle3.png" alt="Doodle 3" class="doodle3">
+        <img src="doodle3.png" alt="Doodle 3-2" class="doodle3-2">
+        <img src="doodle3.png" alt="Doodle 3-3" class="doodle3-3">
+        <img src="doodle3.png" alt="Doodle 3-4" class="doodle3-4">
+        <img src="doodle3.png" alt="Doodle 3-5" class="doodle3-5">
+        <img src="doodle3.png" alt="Doodle 3-6" class="doodle3-6">
+        <img src="doodle3.png" alt="Doodle 3-7" class="doodle3-7">
+        <img src="doodle1.png" alt="Doodle 1-8" class="doodle1-8">
+        <img src="doodle2.png" alt="Doodle 2-8" class="doodle2-8">
+        <img src="doodle3.png" alt="Doodle 3-8" class="doodle3-8">
+        <img src="doodle1.png" alt="Doodle 1-9" class="doodle1-9">
+        <img src="doodle2.png" alt="Doodle 2-9" class="doodle2-9">
+        <img src="doodle3.png" alt="Doodle 3-9" class="doodle3-9">
+        <img src="doodle1.png" alt="Doodle 1-10" class="doodle1-10">
+        <img src="doodle2.png" alt="Doodle 2-10" class="doodle2-10">
+        <img src="doodle1.png" alt="Doodle 1-11" class="doodle1-11">
+        <img src="doodle2.png" alt="Doodle 2-11" class="doodle2-11">
+        <img src="doodle3.png" alt="Doodle 3-11" class="doodle3-11">
+        <img src="doodle1.png" alt="Doodle 1-12" class="doodle1-12">
+        <img src="doodle2.png" alt="Doodle 2-12" class="doodle2-12">
+    </div>
+    
+    
+    <!-- Layer 1 - ALI ae.webm (Top Section) -->
+    <div class="layer1">
+        <video class="ali-video" autoplay muted loop playsinline>
+            <source src="ALI ae.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <!-- Layer 2 - Video and Images (Middle Section) -->
+    <div class="layer2">
+        <!-- Promotional Slider -->
+        <div class="promotional-section">
+            <div class="promo-slider">
+                <!-- Video Slide -->
+                <div class="promo-slide active">
+                    <video class="promo-video" autoplay muted playsinline id="mainVideo">
+                        <source src="Ali, Muthu .mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <!-- Halal Badge inside video -->
+                    <div class="halal-badge">
+                    </div>
+                </div>
+                
+                <!-- Image Slides -->
+                <div class="promo-slide">
+                    <img src="assamL.jpg" alt="Assam Laksa" class="promo-image">
+                    <!-- Halal Badge inside image -->
+                    <div class="halal-badge">
+                    </div>
+                </div>
+                
+                <div class="promo-slide">
+                    <img src="addImg.jpg" alt="Advertisement Image" class="promo-image">
+                    <!-- Halal Badge inside image -->
+                    <div class="halal-badge">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pagination Dots -->
+        <div class="pagination-dots">
+            <div class="dot active" onclick="currentSlide(1)"></div>
+            <div class="dot" onclick="currentSlide(2)"></div>
+            <div class="dot" onclick="currentSlide(3)"></div>
+        </div>
+    </div>
+    
+    <!-- Layer 3 - START ORDER Button (Bottom Section) -->
+    <div class="layer3">
+        <div class="button-container">
+                        <button class="start-order-btn" onclick="window.location.href='language-page-sample.html'">
+                            START ORDER
+                        </button>
+        </div>
+    </div>
+
+
+    <script>
+        // Navigation function
+        function showPage(pageId) {
+            if (pageId === 'language-page') {
+                window.location.href = 'language-page-sample.html';
+            }
+        }
+
+        let slideIndex = 1;
+        let slideInterval;
+        let isVideoPlaying = true;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.promo-slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[slideIndex - 1].classList.add('active');
+            dots[slideIndex - 1].classList.add('active');
+        }
+
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+            // Reset auto-rotation timer
+            clearInterval(slideInterval);
+            startAutoRotation();
+        }
+
+        function nextSlide() {
+            showSlide(slideIndex += 1);
+        }
+
+        function startAutoRotation() {
+            // Don't start auto-rotation if video is playing
+            if (isVideoPlaying) return;
+            
+            slideInterval = setInterval(() => {
+                nextSlide();
+            }, 4000); // 4 seconds for images
+        }
+
+        // Handle video events
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('mainVideo');
+            
+            if (video) {
+                // Force video to play
+                video.play().catch(e => {
+                    console.log('Autoplay prevented:', e);
+                    // Try to play on user interaction
+                    document.addEventListener('click', function() {
+                        video.play();
+                    }, { once: true });
+                });
+
+                // When video ends, start auto-rotation for images
+                video.addEventListener('ended', function() {
+                    isVideoPlaying = false;
+                    slideIndex = 2; // Move to first image
+                    showSlide(slideIndex);
+                    startAutoRotation(); // Start 4-second intervals for images
+                });
+
+                // When video is playing, stop auto-rotation
+                video.addEventListener('play', function() {
+                    isVideoPlaying = true;
+                    clearInterval(slideInterval);
+                });
+            }
+        });
+    </script>
+    
+    <!-- Translations and Timeout System -->
+    <script src="translations.js"></script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+        
+        // Initialize timeout system on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeInactivityTimer();
+        });
+    </script>
+</body>
+</html>
