@@ -1,0 +1,11 @@
+PLACEHOLDER ICON FILE
+=====================
+
+This is a placeholder for icon.png
+
+To complete the PWA setup:
+1. Replace this file with your actual icon.png (192x192 and 512x512 pixels)
+2. The icon should be a PNG file named "icon.png"
+3. Place it in the root directory of your project
+
+Your icon should represent your kiosk system and work well at both small (192x192) and large (512x512) sizes.
