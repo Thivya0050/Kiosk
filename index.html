@@ -29,14 +29,14 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+    
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #ddcbbd, #ddbcad);
             height: 100vh;
             overflow: hidden;
         }
-
+        
         .background-doodles {
             position: fixed;
             top: 0;
@@ -53,7 +53,7 @@
             max-width: 100%;
             height: auto;
         }
-
+        
         .doodle1 {
             position: absolute;
             top: 10%;
@@ -422,7 +422,7 @@
         .ali-video {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+                object-fit: contain;
             border-radius: 0;
             display: block;
             background-color: transparent;
@@ -433,12 +433,12 @@
             position: absolute;
             top: 30%;
             left: 0;
-            width: 100%;
+                width: 100%;
             height: 55%;
             z-index: 5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             padding: 20px;
         }
 
@@ -446,15 +446,15 @@
             width: 100%;
             max-width: 1000px;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             position: relative;
         }
 
         .promo-slider {
             position: relative;
-            width: 100%;
+                width: 100%;
             height: 100%;
             overflow: hidden;
             border-radius: 20px;
@@ -464,15 +464,15 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+                width: 100%;
             height: 100%;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            display: flex;
+                display: flex;
             align-items: center;
-            justify-content: center;
-        }
-
+                justify-content: center;
+            }
+            
         .promo-slide.active {
             opacity: 1;
         }
@@ -487,8 +487,8 @@
         .promo-image {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            border-radius: 20px;
+                object-fit: contain;
+                border-radius: 20px;
             background: url('wood.png') repeat;
             background-size: 200px 100%;
         }
@@ -498,14 +498,14 @@
             position: absolute;
             bottom: 30px;
             right: 30px;
-            width: 200px;
+                width: 200px;
             height: 200px;
             background: url('halal.png') no-repeat center center;
             background-size: contain;
             border-radius: 100%;
-            display: flex;
+                display: flex;
             align-items: center;
-            justify-content: center;
+                justify-content: center;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
             z-index: 15;
         }
@@ -516,12 +516,12 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
+                display: flex;
             gap: 10px;
             z-index: 15;
-        }
-
-        .dot {
+            }
+            
+            .dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
@@ -531,9 +531,9 @@
         }
 
         .dot.active {
-            background: white;
-        }
-
+                background: white;
+            }
+            
         .dot:hover {
             background: rgba(255, 255, 255, 0.8);
         }
@@ -578,7 +578,7 @@
             margin: 0 auto;
             display: block;
         }
-
+        
         .start-order-btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
@@ -597,13 +597,13 @@
             
             .layer1 {
                 height: 25%;
-                padding: 20px;
+            padding: 20px;
                 width: 50%;
             }
             
             .ali-video {
-                width: 100%;
-                height: 100%;
+            width: 100%;
+            height: 100%;
                 max-width: 400px;
             }
             
@@ -619,17 +619,17 @@
             }
             
             .promo-slider {
-                height: 100%;
-            }
-            
+            height: 100%;
+        }
+        
             .layer3 {
                 height: 20%;
                 padding: 20px;
             }
             
             .button-container {
-                max-width: 600px;
-                margin: 0 auto;
+            max-width: 600px;
+            margin: 0 auto;
             }
             
             .start-order-btn {
@@ -660,7 +660,7 @@
         @media (max-width: 1024px) {
             .start-order-btn {
                 padding: 20px 40px;
-                font-size: 24px;
+            font-size: 24px;
             }
             
             .halal-badge {
@@ -682,7 +682,7 @@
             .layer2 {
                 top: 20%;
                 height: 65%;
-                padding: 15px;
+            padding: 15px;
             }
             
             .layer3 {
@@ -711,7 +711,7 @@
     </style>
 </head>
 <body>
-    <div class="background-doodles">
+                <div class="background-doodles">
         <img src="doodle1.png" alt="" class="doodle1">
         <img src="doodle1.png" alt="" class="doodle1-2">
         <img src="doodle1.png" alt="" class="doodle1-3">
@@ -746,69 +746,69 @@
         <img src="doodle3.png" alt="" class="doodle3-11">
         <img src="doodle1.png" alt="" class="doodle1-12">
         <img src="doodle2.png" alt="" class="doodle2-12">
-    </div>
-    
+                </div>
+                
     
     <!-- Layer 1 - ALI ae.webm (Top Section) -->
     <div class="layer1">
         <video class="ali-video" autoplay muted loop playsinline preload="auto">
-            <source src="ALI ae.webm" type="video/webm">
-            <source src="Ali, Muthu .mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-    
+                        <source src="ALI ae.webm" type="video/webm">
+            <source src="ALI ae.webm" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                  </div>
+                
     <!-- Layer 2 - Video and Images (Middle Section) -->
     <div class="layer2">
         <!-- Promotional Slider -->
-        <div class="promotional-section">
-            <div class="promo-slider">
+                <div class="promotional-section">
+                    <div class="promo-slider">
                 <!-- Video Slide -->
-                <div class="promo-slide active">
+                        <div class="promo-slide active">
                     <video class="promo-video" autoplay muted playsinline id="mainVideo">
                         <source src="Ali, Muthu .mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <!-- Halal Badge inside video -->
                     <div class="halal-badge">
-                    </div>
-                </div>
+                                </div>
+                            </div>
                 
                 <!-- Image Slides -->
-                <div class="promo-slide">
+                        <div class="promo-slide">
                     <img src="assamL.jpg" alt="Assam Laksa" class="promo-image">
                     <!-- Halal Badge inside image -->
                     <div class="halal-badge">
-                    </div>
-                </div>
+                                </div>
+                            </div>
                 
-                <div class="promo-slide">
+                        <div class="promo-slide">
                     <img src="addImg.jpg" alt="Advertisement Image" class="promo-image">
                     <!-- Halal Badge inside image -->
                     <div class="halal-badge">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
         
         <!-- Pagination Dots -->
         <div class="pagination-dots">
             <div class="dot active" onclick="currentSlide(1)"></div>
             <div class="dot" onclick="currentSlide(2)"></div>
             <div class="dot" onclick="currentSlide(3)"></div>
-        </div>
-    </div>
-    
+                    </div>
+                </div>
+                
     <!-- Layer 3 - START ORDER Button (Bottom Section) -->
     <div class="layer3">
         <div class="button-container">
                         <button class="start-order-btn" onclick="window.location.href='language-page-sample.html'">
-                            START ORDER
-                        </button>
+                        START ORDER
+                    </button>
+            </div>
         </div>
-    </div>
 
-
+    
     <script>
         // Navigation function
         function showPage(pageId) {
@@ -834,7 +834,7 @@
             slides[slideIndex - 1].classList.add('active');
             dots[slideIndex - 1].classList.add('active');
         }
-
+        
         function currentSlide(n) {
             showSlide(slideIndex = n);
             // Reset auto-rotation timer
