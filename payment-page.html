@@ -67,6 +67,7 @@
             top: 0;
             left: 0;
             right: 0;
+            
             height: 80px;
             background: linear-gradient(135deg, #f4e4bc 0%, #e8d5a3 50%, #d4c4a8 100%);
             display: flex;
@@ -307,9 +308,9 @@
             font-size: 28px;
         }
 
-        .payment-icon.cash::before {
-            content: "💵";
-            font-size: 28px;
+        .payment-icon.cash {
+            background: url('cash.png') no-repeat center;
+            background-size: contain;
         }
 
         /* Bottom Navigation */
@@ -375,12 +376,22 @@
             .header {
                 height: 60px;
                 padding: 0 20px;
+                justify-content: center;
+            }
+
+            .logo {
+                width: 60px;
+                height: 45px;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
             }
 
             .header-title {
                 font-size: 32px;
                 padding: 20px 60px;
                 min-width: 550px;
+                margin-left: 80px;
             }
 
             .main-content {
@@ -397,17 +408,38 @@
             }
 
             .order-summary {
-                max-width: 500px;
+                max-width: 550px;
                 padding: 15px;
                 max-height: 180px;
                 flex: 0 0 auto;
             }
 
             .payment-options {
-                max-width: 500px;
+                max-width: 550px;
                 padding: 15px;
                 flex: 0 0 auto;
                 min-height: 0;
+            }
+
+            .payment-methods-grid {
+                gap: 15px;
+                margin-top: 15px;
+            }
+
+            .payment-method {
+                padding: 25px;
+                min-height: 120px;
+            }
+
+            .payment-icon {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 15px;
+            }
+
+            .payment-method label {
+                font-size: 16px;
+                font-weight: bold;
             }
 
             .order-items-container {
@@ -697,7 +729,9 @@
                 </div>
                 <div class="payment-method" onclick="selectPaymentMethod('cash')">
                     <input type="radio" name="payment" id="cash" value="cash" checked>
-                    <div class="payment-icon cash"></div>
+                    <div class="payment-icon">
+                        <img src="cash.png" alt="Cash" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
                     <label for="cash" data-translate="cashAtCounter">Cash at Counter</label>
                 </div>
             </div>
